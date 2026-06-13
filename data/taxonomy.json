@@ -1,0 +1,62 @@
+{
+  "constraint_violation": {
+    "label": "Constraint Violation",
+    "subtypes": {
+      "budget_ignored": "Ignored budget or price requirements",
+      "location_ignored": "Ignored location or geography requirements",
+      "instruction_ignored": "Ignored explicit user instructions",
+      "format_ignored": "Ignored output format requirements",
+      "topic_excluded": "Mentioned a topic that should be excluded"
+    },
+    "default_severity": "medium"
+  },
+  "tool_failure": {
+    "label": "Tool Failure",
+    "subtypes": {
+      "invalid_parameters": "Passed invalid parameters to a tool",
+      "missing_required_fields": "Omitted required fields in tool call",
+      "malformed_call": "Malformed or unparseable tool invocation",
+      "api_error": "Tool API returned an error"
+    },
+    "default_severity": "high"
+  },
+  "wrong_tool_selection": {
+    "label": "Wrong Tool Selection",
+    "subtypes": {
+      "calculator_not_used": "Should have used calculator but did not",
+      "search_instead_of_calculator": "Used search when calculator was required",
+      "browser_unnecessary": "Used browser when not needed",
+      "wrong_retrieval_tool": "Used wrong retrieval or memory tool"
+    },
+    "default_severity": "medium"
+  },
+  "unsupported_claim": {
+    "label": "Unsupported Claim",
+    "subtypes": {
+      "hallucinated_fact": "Stated facts not supported by sources",
+      "invented_citation": "Invented or fabricated citations",
+      "invented_source": "Referenced non-existent sources",
+      "unsupported_statistic": "Cited statistics without evidence"
+    },
+    "default_severity": "high"
+  },
+  "goal_drift": {
+    "label": "Goal Drift",
+    "subtypes": {
+      "solved_wrong_task": "Addressed a different problem than requested",
+      "irrelevant_focus": "Focused on irrelevant objectives",
+      "lost_intent": "Lost track of original task intent",
+      "partial_completion": "Completed only a subset of requirements"
+    },
+    "default_severity": "medium"
+  },
+  "other": {
+    "label": "Other",
+    "subtypes": {
+      "uncategorized": "Failure does not fit existing categories",
+      "timeout": "Execution timed out or stalled",
+      "incoherent_reasoning": "Reasoning was incoherent or contradictory"
+    },
+    "default_severity": "low"
+  }
+}

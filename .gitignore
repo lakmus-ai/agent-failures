@@ -1,0 +1,26 @@
+# Private evaluation harness — not published in agent-failures
+backend/
+frontend/
+docker-compose.yml
+docs/RUNNING.md
+
+# Secrets
+.env
+**/.env
+**/.env.local
+
+# Python / Node
+__pycache__/
+*.py[cod]
+.venv/
+node_modules/
+.next/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db

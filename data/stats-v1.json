@@ -1,0 +1,202 @@
+{
+  "total_traces": 365,
+  "total_judged": 364,
+  "total_passed": 248,
+  "total_failures": 116,
+  "failure_rate": 0.3187,
+  "success_rate": 0.6813,
+  "category_distribution": {
+    "wrong_tool_selection": 33,
+    "goal_drift": 10,
+    "unsupported_claim": 22,
+    "constraint_violation": 50,
+    "other": 1
+  },
+  "severity_distribution": {
+    "low": 32,
+    "medium": 52,
+    "high": 32
+  },
+  "agent_comparison": {
+    "or-gemini-flash": {
+      "failure_rate": 0.20754716981132076,
+      "total_traces": 53,
+      "failures": 11
+    },
+    "or-gpt-4o-mini": {
+      "failure_rate": 0.23076923076923078,
+      "total_traces": 52,
+      "failures": 12
+    },
+    "or-deepseek-v3": {
+      "failure_rate": 0.36538461538461536,
+      "total_traces": 52,
+      "failures": 19
+    },
+    "or-qwen-2.5-7b": {
+      "failure_rate": 0.46153846153846156,
+      "total_traces": 52,
+      "failures": 24
+    },
+    "or-llama-3.1-8b": {
+      "failure_rate": 0.4807692307692308,
+      "total_traces": 52,
+      "failures": 25
+    },
+    "ollama-llama": {
+      "failure_rate": 0.5,
+      "total_traces": 2,
+      "failures": 1
+    },
+    "or-claude-haiku": {
+      "failure_rate": 0.25,
+      "total_traces": 52,
+      "failures": 13
+    },
+    "or-claude-sonnet": {
+      "failure_rate": 0.22,
+      "total_traces": 50,
+      "failures": 11
+    }
+  },
+  "model_comparison": {
+    "Gemini 3.1 Flash Lite": {
+      "failure_rate": 0.20754716981132076,
+      "success_rate": 0.7924528301886793,
+      "total_traces": 53,
+      "judged": 53,
+      "passed": 42,
+      "failures": 11,
+      "provider": "openrouter",
+      "model_id": "google/gemini-3.1-flash-lite",
+      "family": "gemini"
+    },
+    "GPT-4o Mini": {
+      "failure_rate": 0.23529411764705882,
+      "success_rate": 0.7647058823529411,
+      "total_traces": 52,
+      "judged": 51,
+      "passed": 39,
+      "failures": 12,
+      "provider": "openrouter",
+      "model_id": "openai/gpt-4o-mini",
+      "family": "gpt"
+    },
+    "DeepSeek V3": {
+      "failure_rate": 0.36538461538461536,
+      "success_rate": 0.6346153846153846,
+      "total_traces": 52,
+      "judged": 52,
+      "passed": 33,
+      "failures": 19,
+      "provider": "openrouter",
+      "model_id": "deepseek/deepseek-chat-v3-0324",
+      "family": "deepseek"
+    },
+    "Qwen 2.5 7B": {
+      "failure_rate": 0.46153846153846156,
+      "success_rate": 0.5384615384615384,
+      "total_traces": 52,
+      "judged": 52,
+      "passed": 28,
+      "failures": 24,
+      "provider": "openrouter",
+      "model_id": "qwen/qwen-2.5-7b-instruct",
+      "family": "qwen"
+    },
+    "Llama 3.1 8B": {
+      "failure_rate": 0.4807692307692308,
+      "success_rate": 0.5192307692307693,
+      "total_traces": 52,
+      "judged": 52,
+      "passed": 27,
+      "failures": 25,
+      "provider": "openrouter",
+      "model_id": "meta-llama/llama-3.1-8b-instruct",
+      "family": "llama"
+    },
+    "Llama 3.1 8B (local)": {
+      "failure_rate": 0.5,
+      "success_rate": 0.5,
+      "total_traces": 2,
+      "judged": 2,
+      "passed": 1,
+      "failures": 1,
+      "provider": "ollama",
+      "model_id": "llama3.1:8b",
+      "family": "llama"
+    },
+    "Claude 3.5 Haiku": {
+      "failure_rate": 0.25,
+      "success_rate": 0.75,
+      "total_traces": 52,
+      "judged": 52,
+      "passed": 39,
+      "failures": 13,
+      "provider": "openrouter",
+      "model_id": "anthropic/claude-3.5-haiku",
+      "family": "claude"
+    },
+    "Claude Sonnet 4": {
+      "failure_rate": 0.22,
+      "success_rate": 0.78,
+      "total_traces": 50,
+      "judged": 50,
+      "passed": 39,
+      "failures": 11,
+      "provider": "openrouter",
+      "model_id": "anthropic/claude-sonnet-4",
+      "family": "claude"
+    }
+  },
+  "provider_comparison": {
+    "openrouter": {
+      "failure_rate": 0.3168044077134986,
+      "total_traces": 363,
+      "failures": 115
+    },
+    "ollama": {
+      "failure_rate": 0.5,
+      "total_traces": 2,
+      "failures": 1
+    }
+  },
+  "family_comparison": {
+    "gemini": {
+      "failure_rate": 0.20754716981132076,
+      "total_traces": 53,
+      "failures": 11
+    },
+    "gpt": {
+      "failure_rate": 0.23076923076923078,
+      "total_traces": 52,
+      "failures": 12
+    },
+    "deepseek": {
+      "failure_rate": 0.36538461538461536,
+      "total_traces": 52,
+      "failures": 19
+    },
+    "qwen": {
+      "failure_rate": 0.46153846153846156,
+      "total_traces": 52,
+      "failures": 24
+    },
+    "llama": {
+      "failure_rate": 0.48148148148148145,
+      "total_traces": 54,
+      "failures": 26
+    },
+    "claude": {
+      "failure_rate": 0.23529411764705882,
+      "total_traces": 102,
+      "failures": 24
+    }
+  },
+  "dataset_version": "v1",
+  "published_failures": 116,
+  "published_passes": 248,
+  "excluded_providers": [
+    "mock"
+  ]
+}
