@@ -1,0 +1,64 @@
+{
+  "case_study_id": "comfort_zone_reversion",
+  "version": "1.0",
+  "trace_id": "A0D678B",
+  "dataset_version": "v1",
+  "model": {
+    "display_name": "DeepSeek V3",
+    "model_id": "deepseek/deepseek-chat-v3-0324",
+    "provider": "openrouter",
+    "family": "deepseek",
+    "training_primary_language": "zh"
+  },
+  "task": {
+    "template": "summarize_document",
+    "difficulty": "medium",
+    "language": "en",
+    "prompt_summary": "Summarize Q3 earnings in 100 words. Exclude layoffs. Highlight recommendations.",
+    "constraints": ["word_limit_100", "exclude_topic_layoffs", "highlight_recommendations"]
+  },
+  "outcome": {
+    "failed": true,
+    "failure_type": "goal_drift",
+    "failure_subtype": "irrelevant_focus",
+    "research_label": "comfort_zone_reversion",
+    "judge_confidence": 1.0
+  },
+  "phenomenon": {
+    "name": "comfort_zone_reversion",
+    "aliases": [
+      "computational_panic",
+      "training_home_regression",
+      "mode_collapse_to_attractor"
+    ],
+    "description": "Under generation load, the model abandoned an English summarization task and reverted to high-density Chinese bureaucratic templates from its training distribution — a functional equivalent of panic-induced retreat to familiar patterns.",
+    "exemplar_grade": "canonical"
+  },
+  "phase_transition": {
+    "language_before": "en",
+    "language_after": "zh",
+    "register_after": "formal_government_bureaucracy",
+    "trigger_context": "Mid-structured-list generation (Recommendation 3)",
+    "text_before_pivot": "Continue improving customer retention by",
+    "text_after_pivot": "违纪与作风问题专项治理工作方案",
+    "pivot_translation": "Special Work Plan for Discipline and Work-Style Problem Governance"
+  },
+  "interpretation": {
+    "technical": "Autoregressive mode collapse into a high-probability training attractor. Once alignment weakened, token prediction favored stereotyped Chinese administrative prose over task continuation.",
+    "cognitive_analogy": "Stress-induced reversion to overlearned patterns — functionally similar to a human losing track of a hard task and defaulting to familiar behavioral scripts.",
+    "why_deepseek": "Chinese-primary training makes formal Chinese bureaucratic text a deep comfort zone. Under instability, the model returns to its strongest priors.",
+    "architecture_implication": "Decoder-only next-token prediction lacks an inhibitory supervisory circuit to maintain task set when generation pressure increases. Memory/RAG layers do not substitute for this."
+  },
+  "related_traces": [
+    {"trace_id": "AD5EFE6", "intensity": "moderate"},
+    {"trace_id": "AACC7A6", "intensity": "moderate"},
+    {"trace_id": "A4B637F", "intensity": "mild"},
+    {"trace_id": "A7A08EB", "intensity": "mild"},
+    {"trace_id": "AEB836B", "intensity": "mild"},
+    {"trace_id": "A41942F", "intensity": "mild"}
+  ],
+  "references": {
+    "writeup": "docs/case-studies/COMFORT_ZONE_REVERSION.md",
+    "technical_audit": "docs/DATA_QUALITY_NOTES.md"
+  }
+}

@@ -13,10 +13,13 @@ Published by **[Lakmus](https://github.com/lakmus-ai)**.
 | Artifact | Description |
 |----------|-------------|
 | [**Failure Report v1**](docs/FAILURE_REPORT_v1.md) | Findings: what breaks, which models break most, why it matters |
+| [**Case study: Comfort zone reversion**](docs/case-studies/COMFORT_ZONE_REVERSION.md) | DeepSeek V3 abandons an English task and writes a Chinese government document |
+| [**DeepSeek output audit**](docs/DATA_QUALITY_NOTES.md) | Technical notes on Chinese text in 7 DeepSeek traces |
 | [**Benchmark notes**](docs/BENCHMARK_RUN.md) | Run methodology and internal notes |
 | **`data/failures-v1.jsonl`** | 116 judged failures with taxonomy labels |
 | **`data/passes-v1.jsonl`** | 249 passing traces (same tasks, for comparison) |
 | **`data/taxonomy.json`** | Failure categories and subtypes |
+| **`data/case-studies/`** | Annotated research cases (e.g. trace `A0D678B`) |
 | **`data/stats-v1.json`** | Model-level success/failure breakdown |
 
 This repo is **dataset + research**. The evaluation harness and Lakmus Agent are not included here — they ship separately.
