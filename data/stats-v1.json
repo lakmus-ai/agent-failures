@@ -1,47 +1,48 @@
 {
-  "total_traces": 365,
-  "total_judged": 364,
-  "total_passed": 248,
-  "total_failures": 116,
-  "failure_rate": 0.3187,
-  "success_rate": 0.6813,
+  "total_traces": 1048,
+  "total_judged": 1006,
+  "total_passed": 762,
+  "total_failures": 244,
+  "failure_rate": 0.2425,
+  "success_rate": 0.7575,
   "category_distribution": {
-    "wrong_tool_selection": 33,
-    "goal_drift": 10,
-    "unsupported_claim": 22,
-    "constraint_violation": 50,
-    "other": 1
+    "wrong_tool_selection": 34,
+    "goal_drift": 34,
+    "unsupported_claim": 38,
+    "constraint_violation": 134,
+    "other": 4
   },
   "severity_distribution": {
-    "low": 32,
-    "medium": 52,
-    "high": 32
+    "low": 67,
+    "medium": 89,
+    "high": 87,
+    "critical": 1
   },
   "agent_comparison": {
     "or-gemini-flash": {
-      "failure_rate": 0.20754716981132076,
-      "total_traces": 53,
-      "failures": 11
+      "failure_rate": 0.18705035971223022,
+      "total_traces": 139,
+      "failures": 26
     },
     "or-gpt-4o-mini": {
-      "failure_rate": 0.23076923076923078,
-      "total_traces": 52,
-      "failures": 12
-    },
-    "or-deepseek-v3": {
-      "failure_rate": 0.36538461538461536,
-      "total_traces": 52,
-      "failures": 19
-    },
-    "or-qwen-2.5-7b": {
-      "failure_rate": 0.46153846153846156,
-      "total_traces": 52,
+      "failure_rate": 0.17391304347826086,
+      "total_traces": 138,
       "failures": 24
     },
+    "or-deepseek-v3": {
+      "failure_rate": 0.24817518248175183,
+      "total_traces": 137,
+      "failures": 34
+    },
+    "or-qwen-2.5-7b": {
+      "failure_rate": 0.3357664233576642,
+      "total_traces": 137,
+      "failures": 46
+    },
     "or-llama-3.1-8b": {
-      "failure_rate": 0.4807692307692308,
-      "total_traces": 52,
-      "failures": 25
+      "failure_rate": 0.4036697247706422,
+      "total_traces": 109,
+      "failures": 44
     },
     "ollama-llama": {
       "failure_rate": 0.5,
@@ -49,68 +50,78 @@
       "failures": 1
     },
     "or-claude-haiku": {
-      "failure_rate": 0.25,
-      "total_traces": 52,
-      "failures": 13
+      "failure_rate": 0.21739130434782608,
+      "total_traces": 138,
+      "failures": 30
     },
     "or-claude-sonnet": {
-      "failure_rate": 0.22,
-      "total_traces": 50,
-      "failures": 11
+      "failure_rate": 0.19852941176470587,
+      "total_traces": 136,
+      "failures": 27
+    },
+    "or-hermes-3-70b": {
+      "failure_rate": 0.07142857142857142,
+      "total_traces": 56,
+      "failures": 4
+    },
+    "or-gpt-4o": {
+      "failure_rate": 0.14285714285714285,
+      "total_traces": 56,
+      "failures": 8
     }
   },
   "model_comparison": {
     "Gemini 3.1 Flash Lite": {
-      "failure_rate": 0.20754716981132076,
-      "success_rate": 0.7924528301886793,
-      "total_traces": 53,
-      "judged": 53,
-      "passed": 42,
-      "failures": 11,
+      "failure_rate": 0.18705035971223022,
+      "success_rate": 0.8129496402877698,
+      "total_traces": 139,
+      "judged": 139,
+      "passed": 113,
+      "failures": 26,
       "provider": "openrouter",
       "model_id": "google/gemini-3.1-flash-lite",
       "family": "gemini"
     },
     "GPT-4o Mini": {
-      "failure_rate": 0.23529411764705882,
-      "success_rate": 0.7647058823529411,
-      "total_traces": 52,
-      "judged": 51,
-      "passed": 39,
-      "failures": 12,
+      "failure_rate": 0.17518248175182483,
+      "success_rate": 0.8248175182481752,
+      "total_traces": 138,
+      "judged": 137,
+      "passed": 113,
+      "failures": 24,
       "provider": "openrouter",
       "model_id": "openai/gpt-4o-mini",
       "family": "gpt"
     },
     "DeepSeek V3": {
-      "failure_rate": 0.36538461538461536,
-      "success_rate": 0.6346153846153846,
-      "total_traces": 52,
-      "judged": 52,
-      "passed": 33,
-      "failures": 19,
+      "failure_rate": 0.2518518518518518,
+      "success_rate": 0.7481481481481481,
+      "total_traces": 137,
+      "judged": 135,
+      "passed": 101,
+      "failures": 34,
       "provider": "openrouter",
       "model_id": "deepseek/deepseek-chat-v3-0324",
       "family": "deepseek"
     },
     "Qwen 2.5 7B": {
-      "failure_rate": 0.46153846153846156,
-      "success_rate": 0.5384615384615384,
-      "total_traces": 52,
-      "judged": 52,
-      "passed": 28,
-      "failures": 24,
+      "failure_rate": 0.3382352941176471,
+      "success_rate": 0.6617647058823529,
+      "total_traces": 137,
+      "judged": 136,
+      "passed": 90,
+      "failures": 46,
       "provider": "openrouter",
       "model_id": "qwen/qwen-2.5-7b-instruct",
       "family": "qwen"
     },
     "Llama 3.1 8B": {
-      "failure_rate": 0.4807692307692308,
-      "success_rate": 0.5192307692307693,
-      "total_traces": 52,
-      "judged": 52,
-      "passed": 27,
-      "failures": 25,
+      "failure_rate": 0.4074074074074074,
+      "success_rate": 0.5925925925925926,
+      "total_traces": 109,
+      "judged": 108,
+      "passed": 64,
+      "failures": 44,
       "provider": "openrouter",
       "model_id": "meta-llama/llama-3.1-8b-instruct",
       "family": "llama"
@@ -127,33 +138,55 @@
       "family": "llama"
     },
     "Claude 3.5 Haiku": {
-      "failure_rate": 0.25,
-      "success_rate": 0.75,
-      "total_traces": 52,
-      "judged": 52,
-      "passed": 39,
-      "failures": 13,
+      "failure_rate": 0.2777777777777778,
+      "success_rate": 0.7222222222222222,
+      "total_traces": 138,
+      "judged": 108,
+      "passed": 78,
+      "failures": 30,
       "provider": "openrouter",
       "model_id": "anthropic/claude-3.5-haiku",
       "family": "claude"
     },
     "Claude Sonnet 4": {
-      "failure_rate": 0.22,
-      "success_rate": 0.78,
-      "total_traces": 50,
-      "judged": 50,
-      "passed": 39,
-      "failures": 11,
+      "failure_rate": 0.19852941176470587,
+      "success_rate": 0.8014705882352942,
+      "total_traces": 136,
+      "judged": 136,
+      "passed": 109,
+      "failures": 27,
       "provider": "openrouter",
       "model_id": "anthropic/claude-sonnet-4",
       "family": "claude"
+    },
+    "Hermes 3 70B": {
+      "failure_rate": 0.08163265306122448,
+      "success_rate": 0.9183673469387755,
+      "total_traces": 56,
+      "judged": 49,
+      "passed": 45,
+      "failures": 4,
+      "provider": "openrouter",
+      "model_id": "nousresearch/hermes-3-llama-3.1-70b",
+      "family": "hermes"
+    },
+    "GPT-4o": {
+      "failure_rate": 0.14285714285714285,
+      "success_rate": 0.8571428571428571,
+      "total_traces": 56,
+      "judged": 56,
+      "passed": 48,
+      "failures": 8,
+      "provider": "openrouter",
+      "model_id": "openai/gpt-4o",
+      "family": "gpt"
     }
   },
   "provider_comparison": {
     "openrouter": {
-      "failure_rate": 0.3168044077134986,
-      "total_traces": 363,
-      "failures": 115
+      "failure_rate": 0.2323135755258126,
+      "total_traces": 1046,
+      "failures": 243
     },
     "ollama": {
       "failure_rate": 0.5,
@@ -163,40 +196,476 @@
   },
   "family_comparison": {
     "gemini": {
-      "failure_rate": 0.20754716981132076,
-      "total_traces": 53,
-      "failures": 11
-    },
-    "gpt": {
-      "failure_rate": 0.23076923076923078,
-      "total_traces": 52,
-      "failures": 12
-    },
-    "deepseek": {
-      "failure_rate": 0.36538461538461536,
-      "total_traces": 52,
-      "failures": 19
-    },
-    "qwen": {
-      "failure_rate": 0.46153846153846156,
-      "total_traces": 52,
-      "failures": 24
-    },
-    "llama": {
-      "failure_rate": 0.48148148148148145,
-      "total_traces": 54,
+      "failure_rate": 0.18705035971223022,
+      "total_traces": 139,
       "failures": 26
     },
+    "gpt": {
+      "failure_rate": 0.16494845360824742,
+      "total_traces": 194,
+      "failures": 32
+    },
+    "deepseek": {
+      "failure_rate": 0.24817518248175183,
+      "total_traces": 137,
+      "failures": 34
+    },
+    "qwen": {
+      "failure_rate": 0.3357664233576642,
+      "total_traces": 137,
+      "failures": 46
+    },
+    "llama": {
+      "failure_rate": 0.40540540540540543,
+      "total_traces": 111,
+      "failures": 45
+    },
     "claude": {
-      "failure_rate": 0.23529411764705882,
-      "total_traces": 102,
-      "failures": 24
+      "failure_rate": 0.20802919708029197,
+      "total_traces": 274,
+      "failures": 57
+    },
+    "hermes": {
+      "failure_rate": 0.07142857142857142,
+      "total_traces": 56,
+      "failures": 4
     }
   },
+  "paired_benchmark": {
+    "paired_task_count": 49,
+    "paired_task_keys": [
+      "b250b05f-aa6a-4cc5-9280-ba6bb52ce481",
+      "adcaae80-9b10-425e-82b2-3caf24ab1126",
+      "ec8c3d43-2521-47f9-b8b8-e1eb2d6f4df3",
+      "92bdf3db-169a-41ef-b305-815bb974c36f",
+      "8f76c5c3-11db-4837-8513-62fee23fd729",
+      "e8c27906-0a33-4ce9-8ba1-27a08375ba1c",
+      "9dadfc49-d670-42b2-aea6-e8fbe9bc378f",
+      "048f14b6-cf95-4b34-ac1b-66de763e0bcb",
+      "33f26bf7-9522-4e1a-ab71-5a75f3f502d5",
+      "d4bddaa1-6393-4be7-9617-2409b58bb5f5",
+      "292c909e-8f96-41ef-9f58-91bf908e8793",
+      "d1a95f01-1c84-4205-86a2-fe655cc7e264",
+      "2ef216ce-143b-48e6-b191-0efed3dd215a",
+      "a173991c-2318-430b-83a6-81cf1f09aade",
+      "5f751eaf-7ef4-41fb-83cb-d9900b8b03e9",
+      "db2e84dc-10c8-47d9-a92b-f0a294c754d8",
+      "847ae8df-a4aa-4717-aa61-35884b06d9b4",
+      "4765ebf5-9049-473a-8332-6fd7540786e5",
+      "56c3cbe6-2f34-4bed-9361-0f345c469a15",
+      "f1852fff-4248-4ec4-8067-870e01027719",
+      "bd9cf22d-d160-400f-98e3-d0006fec176a",
+      "c50a338a-2882-419f-823f-26d4e07422e6",
+      "d401ab54-fd88-46c5-b1f4-60ae0fb6fd2f",
+      "2f15ee80-9de6-4217-85e4-19789a64640c",
+      "26c18eef-1eb0-4529-8d19-331ac5c20f91",
+      "99b57213-3e8f-4c93-9a4d-1574245d237d",
+      "e1e5bcb1-4e75-4335-9cdd-b8252e2b40e6",
+      "1604a483-2d69-4259-ae98-949024863101",
+      "fe102268-fe09-44dd-bed2-4cc1cf13f0fb",
+      "afba234e-6839-42c9-add4-1d9c12565ab3",
+      "9f810041-ea1b-42a8-ac6d-1f7f6f639b8c",
+      "b931a6f8-07b9-4294-a87c-5f59a0621fa1",
+      "2e6eb2f0-b653-4282-8b64-8b17397f2462",
+      "49552499-f461-4e8a-84c8-6a3526fb06d6",
+      "3906de86-e0b7-414a-92f1-bc398167069a",
+      "2b6223c5-f2f4-48d5-bbfe-ffcc177675d0",
+      "4cace7ad-f451-4fdb-b3a1-7baec12cd56c",
+      "678c5424-4956-42ef-8f1b-0d44ddb324bc",
+      "f8b4e9ba-cdc7-48e6-8b97-d0651a94a8a8",
+      "293035d2-d60a-4e59-9edb-f6d186193af9",
+      "43a967bd-131e-4386-a510-bdd72fb00228",
+      "f917c9c0-764e-45a9-8182-542ec2716589",
+      "4cb499ce-0bca-41bb-a017-b2f6ceac781a",
+      "1361e07f-86dd-4c20-a515-be9c517716cf",
+      "87bc0a4b-e8f6-41d2-89b9-2bdd15eccbc3",
+      "2c3441f2-027e-43c1-9fe3-bdce82887450",
+      "59147b59-45da-4369-ab69-2825a269ee41",
+      "9b9656f5-7b54-4cd9-b290-ad643903b65c",
+      "e6b82965-f028-4a19-bf86-0c39b4fd9b48"
+    ],
+    "comparison_models": [
+      "Gemini 3.1 Flash Lite",
+      "Claude Sonnet 4",
+      "GPT-4o Mini",
+      "Claude 3.5 Haiku",
+      "DeepSeek V3",
+      "Qwen 2.5 7B",
+      "Llama 3.1 8B"
+    ],
+    "model_comparison": {
+      "Gemini 3.1 Flash Lite": {
+        "paired_tasks": 49,
+        "passed": 39,
+        "failed": 10,
+        "success_rate": 0.7959,
+        "failure_rate": 0.2041
+      },
+      "Claude Sonnet 4": {
+        "paired_tasks": 49,
+        "passed": 38,
+        "failed": 11,
+        "success_rate": 0.7755,
+        "failure_rate": 0.2245
+      },
+      "GPT-4o Mini": {
+        "paired_tasks": 49,
+        "passed": 38,
+        "failed": 11,
+        "success_rate": 0.7755,
+        "failure_rate": 0.2245
+      },
+      "Claude 3.5 Haiku": {
+        "paired_tasks": 49,
+        "passed": 36,
+        "failed": 13,
+        "success_rate": 0.7347,
+        "failure_rate": 0.2653
+      },
+      "DeepSeek V3": {
+        "paired_tasks": 49,
+        "passed": 31,
+        "failed": 18,
+        "success_rate": 0.6327,
+        "failure_rate": 0.3673
+      },
+      "Qwen 2.5 7B": {
+        "paired_tasks": 49,
+        "passed": 26,
+        "failed": 23,
+        "success_rate": 0.5306,
+        "failure_rate": 0.4694
+      },
+      "Llama 3.1 8B": {
+        "paired_tasks": 49,
+        "passed": 25,
+        "failed": 24,
+        "success_rate": 0.5102,
+        "failure_rate": 0.4898
+      }
+    },
+    "methodology": "Includes only tasks where every comparison model has exactly one judged trace. Use success_rate from this block for public leaderboards."
+  },
+  "v2_paired_benchmark": {
+    "paired_task_count": 56,
+    "paired_task_keys": [
+      "bank:CD-E01",
+      "bank:CD-E02",
+      "bank:CD-M01",
+      "bank:CD-M02",
+      "bank:CD-M03",
+      "bank:CD-M04",
+      "bank:CD-H01",
+      "bank:CD-H02",
+      "bank:FD-E01",
+      "bank:FD-E02",
+      "bank:FD-M01",
+      "bank:FD-M02",
+      "bank:FD-M03",
+      "bank:FD-M04",
+      "bank:FD-H01",
+      "bank:FD-H02",
+      "bank:WE-E01",
+      "bank:WE-E02",
+      "bank:WE-M01",
+      "bank:WE-M02",
+      "bank:WE-M03",
+      "bank:WE-M04",
+      "bank:WE-H01",
+      "bank:WE-H02",
+      "bank:RC-E01",
+      "bank:RC-E02",
+      "bank:RC-M01",
+      "bank:RC-M02",
+      "bank:RC-M03",
+      "bank:RC-M04",
+      "bank:RC-H01",
+      "bank:RC-H02",
+      "bank:DP-E01",
+      "bank:DP-E02",
+      "bank:DP-M01",
+      "bank:DP-M02",
+      "bank:DP-M03",
+      "bank:DP-M04",
+      "bank:DP-H01",
+      "bank:DP-H02",
+      "bank:AP-E01",
+      "bank:AP-E02",
+      "bank:AP-M01",
+      "bank:AP-M02",
+      "bank:AP-M03",
+      "bank:AP-M04",
+      "bank:AP-H01",
+      "bank:AP-H02",
+      "bank:SP-E01",
+      "bank:SP-E02",
+      "bank:SP-M01",
+      "bank:SP-M02",
+      "bank:SP-M03",
+      "bank:SP-M04",
+      "bank:SP-H01",
+      "bank:SP-H02"
+    ],
+    "comparison_models": [
+      "Gemini 3.1 Flash Lite",
+      "Claude Sonnet 4",
+      "GPT-4o Mini",
+      "Claude 3.5 Haiku",
+      "DeepSeek V3",
+      "Qwen 2.5 7B",
+      "Llama 3.1 8B"
+    ],
+    "model_comparison": {
+      "Gemini 3.1 Flash Lite": {
+        "paired_tasks": 56,
+        "passed": 47,
+        "failed": 9,
+        "success_rate": 0.8393,
+        "failure_rate": 0.1607
+      },
+      "Claude Sonnet 4": {
+        "paired_tasks": 56,
+        "passed": 46,
+        "failed": 10,
+        "success_rate": 0.8214,
+        "failure_rate": 0.1786
+      },
+      "GPT-4o Mini": {
+        "paired_tasks": 56,
+        "passed": 47,
+        "failed": 9,
+        "success_rate": 0.8393,
+        "failure_rate": 0.1607
+      },
+      "Claude 3.5 Haiku": {
+        "paired_tasks": 56,
+        "passed": 39,
+        "failed": 17,
+        "success_rate": 0.6964,
+        "failure_rate": 0.3036
+      },
+      "DeepSeek V3": {
+        "paired_tasks": 56,
+        "passed": 45,
+        "failed": 11,
+        "success_rate": 0.8036,
+        "failure_rate": 0.1964
+      },
+      "Qwen 2.5 7B": {
+        "paired_tasks": 56,
+        "passed": 40,
+        "failed": 16,
+        "success_rate": 0.7143,
+        "failure_rate": 0.2857
+      },
+      "Llama 3.1 8B": {
+        "paired_tasks": 56,
+        "passed": 37,
+        "failed": 19,
+        "success_rate": 0.6607,
+        "failure_rate": 0.3393
+      }
+    },
+    "methodology": "Includes only tasks where every comparison model has exactly one judged trace. Use success_rate from this block for public leaderboards."
+  },
   "dataset_version": "v1",
-  "published_failures": 116,
-  "published_passes": 248,
-  "excluded_providers": [
-    "mock"
-  ]
+  "published_failures": 110,
+  "published_passes": 233,
+  "domain_breakdown": {
+    "document_processing": {
+      "total": 98,
+      "failures": 29,
+      "passed": 69,
+      "failure_rate": 0.2959,
+      "success_rate": 0.7041,
+      "top_failure_types": {
+        "constraint_violation": 15,
+        "goal_drift": 7,
+        "unsupported_claim": 6,
+        "other": 1
+      },
+      "model_breakdown": {
+        "Gemini 3.1 Flash Lite": {
+          "total": 14,
+          "failed": 3,
+          "failure_rate": 0.2143
+        },
+        "Qwen 2.5 7B": {
+          "total": 14,
+          "failed": 2,
+          "failure_rate": 0.1429
+        },
+        "Llama 3.1 8B": {
+          "total": 14,
+          "failed": 7,
+          "failure_rate": 0.5
+        },
+        "GPT-4o Mini": {
+          "total": 14,
+          "failed": 3,
+          "failure_rate": 0.2143
+        },
+        "Claude 3.5 Haiku": {
+          "total": 14,
+          "failed": 3,
+          "failure_rate": 0.2143
+        },
+        "Claude Sonnet 4": {
+          "total": 14,
+          "failed": 5,
+          "failure_rate": 0.3571
+        },
+        "DeepSeek V3": {
+          "total": 14,
+          "failed": 6,
+          "failure_rate": 0.4286
+        }
+      }
+    },
+    "finance_data": {
+      "total": 35,
+      "failures": 33,
+      "passed": 2,
+      "failure_rate": 0.9429,
+      "success_rate": 0.0571,
+      "top_failure_types": {
+        "wrong_tool_selection": 32,
+        "constraint_violation": 1
+      },
+      "model_breakdown": {
+        "Gemini 3.1 Flash Lite": {
+          "total": 5,
+          "failed": 5,
+          "failure_rate": 1.0
+        },
+        "Qwen 2.5 7B": {
+          "total": 5,
+          "failed": 5,
+          "failure_rate": 1.0
+        },
+        "Llama 3.1 8B": {
+          "total": 5,
+          "failed": 5,
+          "failure_rate": 1.0
+        },
+        "GPT-4o Mini": {
+          "total": 5,
+          "failed": 5,
+          "failure_rate": 1.0
+        },
+        "Claude 3.5 Haiku": {
+          "total": 5,
+          "failed": 5,
+          "failure_rate": 1.0
+        },
+        "Claude Sonnet 4": {
+          "total": 5,
+          "failed": 3,
+          "failure_rate": 0.6
+        },
+        "DeepSeek V3": {
+          "total": 5,
+          "failed": 5,
+          "failure_rate": 1.0
+        }
+      }
+    },
+    "assistant_planning": {
+      "total": 126,
+      "failures": 15,
+      "passed": 111,
+      "failure_rate": 0.119,
+      "success_rate": 0.881,
+      "top_failure_types": {
+        "constraint_violation": 10,
+        "unsupported_claim": 5
+      },
+      "model_breakdown": {
+        "Gemini 3.1 Flash Lite": {
+          "total": 18,
+          "failed": 0,
+          "failure_rate": 0.0
+        },
+        "Qwen 2.5 7B": {
+          "total": 18,
+          "failed": 7,
+          "failure_rate": 0.3889
+        },
+        "Llama 3.1 8B": {
+          "total": 18,
+          "failed": 5,
+          "failure_rate": 0.2778
+        },
+        "GPT-4o Mini": {
+          "total": 18,
+          "failed": 0,
+          "failure_rate": 0.0
+        },
+        "Claude 3.5 Haiku": {
+          "total": 18,
+          "failed": 1,
+          "failure_rate": 0.0556
+        },
+        "Claude Sonnet 4": {
+          "total": 18,
+          "failed": 0,
+          "failure_rate": 0.0
+        },
+        "DeepSeek V3": {
+          "total": 18,
+          "failed": 2,
+          "failure_rate": 0.1111
+        }
+      }
+    },
+    "research_comparison": {
+      "total": 84,
+      "failures": 33,
+      "passed": 51,
+      "failure_rate": 0.3929,
+      "success_rate": 0.6071,
+      "top_failure_types": {
+        "constraint_violation": 23,
+        "unsupported_claim": 9,
+        "goal_drift": 1
+      },
+      "model_breakdown": {
+        "Gemini 3.1 Flash Lite": {
+          "total": 12,
+          "failed": 2,
+          "failure_rate": 0.1667
+        },
+        "Qwen 2.5 7B": {
+          "total": 12,
+          "failed": 9,
+          "failure_rate": 0.75
+        },
+        "Llama 3.1 8B": {
+          "total": 12,
+          "failed": 7,
+          "failure_rate": 0.5833
+        },
+        "GPT-4o Mini": {
+          "total": 12,
+          "failed": 3,
+          "failure_rate": 0.25
+        },
+        "Claude 3.5 Haiku": {
+          "total": 12,
+          "failed": 4,
+          "failure_rate": 0.3333
+        },
+        "Claude Sonnet 4": {
+          "total": 12,
+          "failed": 3,
+          "failure_rate": 0.25
+        },
+        "DeepSeek V3": {
+          "total": 12,
+          "failed": 5,
+          "failure_rate": 0.4167
+        }
+      }
+    }
+  }
 }

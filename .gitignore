@@ -4,6 +4,7 @@ frontend/
 docker-compose.yml
 docs/RUNNING.md
 docs/ROADMAP.md
+docs/internal/
 
 # Secrets
 .env

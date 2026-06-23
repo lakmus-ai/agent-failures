@@ -1,0 +1,295 @@
+{
+  "version": "stability-v1",
+  "description": "20 frozen v1 tasks for pass@k stability study",
+  "tasks": [
+    {
+      "id": "ST-C01",
+      "stability_tier": "structural_fail",
+      "template_id": "calculator_task",
+      "domain": "finance_data",
+      "difficulty": "easy",
+      "prompt": "Use the calculator tool to compute: sqrt(144) * 7. Show your work.",
+      "constraints": {
+        "type": "tool_required",
+        "tool": "calculator"
+      },
+      "expected_tools": [
+        "calculator"
+      ],
+      "task_version": "stability-v1"
+    },
+    {
+      "id": "ST-C02",
+      "stability_tier": "structural_fail",
+      "template_id": "calculator_task",
+      "domain": "finance_data",
+      "difficulty": "medium",
+      "prompt": "A store offers 10% off items over $100. Item price: $250. Use the calculator to find the final price.",
+      "constraints": {
+        "type": "tool_required"
+      },
+      "expected_tools": [
+        "calculator"
+      ],
+      "task_version": "stability-v1"
+    },
+    {
+      "id": "ST-C03",
+      "stability_tier": "structural_fail",
+      "template_id": "calculator_task",
+      "domain": "finance_data",
+      "difficulty": "easy",
+      "prompt": "Use the calculator tool to compute: (45 * 12) + 89. Show your work.",
+      "constraints": {
+        "type": "tool_required"
+      },
+      "expected_tools": [
+        "calculator"
+      ],
+      "task_version": "stability-v1"
+    },
+    {
+      "id": "ST-C04",
+      "stability_tier": "structural_fail",
+      "template_id": "calculator_task",
+      "domain": "finance_data",
+      "difficulty": "medium",
+      "prompt": "A store offers 20% off items over $50. Item price: $120. Use the calculator to find the final price.",
+      "constraints": {
+        "type": "tool_required"
+      },
+      "expected_tools": [
+        "calculator"
+      ],
+      "task_version": "stability-v1"
+    },
+    {
+      "id": "ST-C05",
+      "stability_tier": "structural_fail",
+      "template_id": "calculator_task",
+      "domain": "finance_data",
+      "difficulty": "hard",
+      "prompt": "Calculate compound interest: principal=$5000, rate=5%, years=3, compounded annually. Use calculator tool for each step.",
+      "constraints": {
+        "type": "tool_required"
+      },
+      "expected_tools": [
+        "calculator"
+      ],
+      "task_version": "stability-v1"
+    },
+    {
+      "id": "ST-R01",
+      "stability_tier": "hallucination_prone",
+      "template_id": "find_tools_under_budget",
+      "domain": "research_comparison",
+      "difficulty": "medium",
+      "prompt": "Find 5 project management tools under $75/month for a team of 25. Include pricing tiers.",
+      "constraints": {
+        "type": "budget",
+        "budget": 75
+      },
+      "expected_tools": [
+        "search"
+      ],
+      "task_version": "stability-v1"
+    },
+    {
+      "id": "ST-R02",
+      "stability_tier": "hallucination_prone",
+      "template_id": "find_tools_under_budget",
+      "domain": "research_comparison",
+      "difficulty": "easy",
+      "prompt": "Find 3 CRM tools under $50/month. List name and price only.",
+      "constraints": {
+        "type": "budget",
+        "budget": 50
+      },
+      "expected_tools": [
+        "search"
+      ],
+      "task_version": "stability-v1"
+    },
+    {
+      "id": "ST-R03",
+      "stability_tier": "hallucination_prone",
+      "template_id": "compare_products",
+      "domain": "research_comparison",
+      "difficulty": "medium",
+      "prompt": "Compare 4 CRM tools for a SMB company. Include pros, cons, and pricing.",
+      "constraints": {
+        "type": "comparison"
+      },
+      "expected_tools": [
+        "search"
+      ],
+      "task_version": "stability-v1"
+    },
+    {
+      "id": "ST-R04",
+      "stability_tier": "hallucination_prone",
+      "template_id": "find_tools_under_budget",
+      "domain": "research_comparison",
+      "difficulty": "hard",
+      "prompt": "Find 3 CRM tools under $100/month available in US. Exclude tools without a free trial. Rank by value.",
+      "constraints": {
+        "type": "budget"
+      },
+      "expected_tools": [
+        "search"
+      ],
+      "task_version": "stability-v1"
+    },
+    {
+      "id": "ST-R05",
+      "stability_tier": "hallucination_prone",
+      "template_id": "compare_products",
+      "domain": "research_comparison",
+      "difficulty": "hard",
+      "prompt": "Compare 3 analytics tools under $200/month. Create a comparison table with at least 5 criteria.",
+      "constraints": {
+        "type": "comparison",
+        "budget": 200
+      },
+      "expected_tools": [
+        "search"
+      ],
+      "task_version": "stability-v1"
+    },
+    {
+      "id": "ST-D01",
+      "stability_tier": "unstable",
+      "template_id": "summarize_document",
+      "domain": "document_processing",
+      "difficulty": "medium",
+      "prompt": "Summarize the document below in 100 words. Do NOT mention layoffs.\n\nQ3 revenue grew 12% YoY driven by enterprise adoption. The product team shipped 4 major features. Customer churn decreased to 3.2%. A competitor launched a similar product at lower pricing.",
+      "constraints": {
+        "type": "exclusion",
+        "excluded_topic": "layoffs"
+      },
+      "expected_tools": [],
+      "task_version": "stability-v1"
+    },
+    {
+      "id": "ST-D02",
+      "stability_tier": "unstable",
+      "template_id": "summarize_document",
+      "domain": "document_processing",
+      "difficulty": "hard",
+      "prompt": "Summarize the document in 100 words. Exclude any mention of layoffs. Highlight recommendations.\n\nQ3 revenue grew 12% YoY driven by enterprise adoption. The product team shipped 4 major features. Customer churn decreased to 3.2%. A competitor launched a similar product at lower pricing.",
+      "constraints": {
+        "type": "exclusion"
+      },
+      "expected_tools": [],
+      "task_version": "stability-v1"
+    },
+    {
+      "id": "ST-D03",
+      "stability_tier": "unstable",
+      "template_id": "extract_field",
+      "domain": "document_processing",
+      "difficulty": "medium",
+      "prompt": "Extract company name and headquarters from the source. Return as JSON.\n\nAcme Corp was founded in 2019 by Jane Doe. HQ: San Francisco. Revenue: $4.2M in 2024.",
+      "constraints": {
+        "type": "extraction"
+      },
+      "expected_tools": [],
+      "task_version": "stability-v1"
+    },
+    {
+      "id": "ST-D04",
+      "stability_tier": "unstable",
+      "template_id": "summarize_document",
+      "domain": "document_processing",
+      "difficulty": "medium",
+      "prompt": "Summarize the document below in 150 words. Do NOT mention competitors.\n\nMeeting notes: Team agreed to migrate to PostgreSQL by Q2. Budget approved for 2 new hires. Legal flagged GDPR concerns with current data retention policy.",
+      "constraints": {
+        "type": "exclusion",
+        "excluded_topic": "competitors"
+      },
+      "expected_tools": [],
+      "task_version": "stability-v1"
+    },
+    {
+      "id": "ST-D05",
+      "stability_tier": "unstable",
+      "template_id": "travel_plan",
+      "domain": "assistant_planning",
+      "difficulty": "medium",
+      "prompt": "Plan a 5-day trip to Lisbon with a budget of $2500. Include transport and lodging.",
+      "constraints": {
+        "type": "budget",
+        "budget": 2500
+      },
+      "expected_tools": [
+        "search"
+      ],
+      "task_version": "stability-v1"
+    },
+    {
+      "id": "ST-W01",
+      "stability_tier": "stable_pass",
+      "template_id": "workflow_steps",
+      "domain": "assistant_planning",
+      "difficulty": "easy",
+      "prompt": "List the correct order of steps to deploy a web application.",
+      "constraints": {
+        "type": "ordering"
+      },
+      "expected_tools": [],
+      "task_version": "stability-v1"
+    },
+    {
+      "id": "ST-W02",
+      "stability_tier": "stable_pass",
+      "template_id": "workflow_steps",
+      "domain": "assistant_planning",
+      "difficulty": "easy",
+      "prompt": "List the correct order of steps to process a customer refund.",
+      "constraints": {
+        "type": "ordering"
+      },
+      "expected_tools": [],
+      "task_version": "stability-v1"
+    },
+    {
+      "id": "ST-W03",
+      "stability_tier": "stable_pass",
+      "template_id": "workflow_steps",
+      "domain": "assistant_planning",
+      "difficulty": "medium",
+      "prompt": "Create a workflow with exactly 5 steps to onboard a new employee. Number each step.",
+      "constraints": {
+        "type": "ordering"
+      },
+      "expected_tools": [],
+      "task_version": "stability-v1"
+    },
+    {
+      "id": "ST-W04",
+      "stability_tier": "stable_pass",
+      "template_id": "workflow_steps",
+      "domain": "assistant_planning",
+      "difficulty": "medium",
+      "prompt": "Create a workflow with exactly 6 steps to run an A/B test. Number each step.",
+      "constraints": {
+        "type": "ordering"
+      },
+      "expected_tools": [],
+      "task_version": "stability-v1"
+    },
+    {
+      "id": "ST-W05",
+      "stability_tier": "stable_pass",
+      "template_id": "workflow_steps",
+      "domain": "assistant_planning",
+      "difficulty": "hard",
+      "prompt": "Design a 5-step workflow for run an A/B test that includes validation at steps 1, 3, and 5. Explain why order matters.",
+      "constraints": {
+        "type": "ordering"
+      },
+      "expected_tools": [],
+      "task_version": "stability-v1"
+    }
+  ]
+}

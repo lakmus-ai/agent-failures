@@ -46,8 +46,7 @@
   "interpretation": {
     "technical": "Autoregressive mode collapse into a high-probability training attractor. Once alignment weakened, token prediction favored stereotyped Chinese administrative prose over task continuation.",
     "cognitive_analogy": "Stress-induced reversion to overlearned patterns — functionally similar to a human losing track of a hard task and defaulting to familiar behavioral scripts.",
-    "why_deepseek": "Chinese-primary training makes formal Chinese bureaucratic text a deep comfort zone. Under instability, the model returns to its strongest priors.",
-    "architecture_implication": "Decoder-only next-token prediction lacks an inhibitory supervisory circuit to maintain task set when generation pressure increases. Memory/RAG layers do not substitute for this."
+    "why_deepseek": "Chinese-primary training makes formal Chinese bureaucratic text a deep comfort zone. Under instability, the model returns to its strongest priors."
   },
   "related_traces": [
     {"trace_id": "AD5EFE6", "intensity": "moderate"},

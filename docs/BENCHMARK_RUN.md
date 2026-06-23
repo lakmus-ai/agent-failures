@@ -1,164 +1,160 @@
-# Lakmus V1 — First Benchmark Run
+# Benchmark Run History
 
-Handoff notes from the first real multi-model benchmark (June 13, 2026). Use this to pick up tomorrow without re-reading the whole session.
+How the Agent Failures datasets were produced — v1 first run, v2 domain expansion, and export rules.
 
-## What we built
+The evaluation harness (FastAPI + SQLite + dashboard) is **not published** in this repo. This document describes what was run and what landed in `data/`.
 
-**Lakmus Failure Forge V1** — automated pipeline:
+---
+
+## Pipeline overview
 
 ```
-Task Generator → Agent Runner → Trace Logger → Failure Judge → Dataset Writer → Dashboard
+Task bank → Agent runner (OpenRouter) → Trace logger → Lakmus judge → Export (canonical dedupe)
 ```
 
-- **Backend:** FastAPI + SQLite (`backend/data/lakmus.db`)
-- **Frontend:** Next.js dashboard
-- **Agents:** OpenRouter (cloud) + Ollama (local)
-- **Judge:** Gemini 3.1 Flash Lite via OpenRouter (cheap, consistent)
-- **Run modes:**
-  - `benchmark` (default) — same N tasks on every selected model (fair comparison)
-  - `quick` — round-robin, fewer total calls, for dev
+- **Judge:** Gemini 3.1 Flash Lite via OpenRouter
+- **Run mode:** `benchmark` — same task set on every selected model
+- **v2 tool calling:** Real calculator wired for finance tasks
 
-## This run
+---
+
+## v1 benchmark (June 2026)
 
 | Setting | Value |
 |---------|-------|
-| Mode | `benchmark` |
-| Tasks | 50 (× 7 cloud models) |
+| Tasks | 50 generated |
 | Models | Gemini Flash, Sonnet 4, GPT-4o Mini, Haiku, DeepSeek V3, Qwen 2.5 7B, Llama 3.1 8B |
-| Duration | ~2 hours (02:21 → 04:22 UTC) |
-| Real traces | **365** |
-| Judged failures | **116** (~31.8%) |
-| Passes | **249** (~68.2%) |
+| Paired set | **49** tasks (all 7 models judged) |
+| Published | 110 failures + 233 passes |
+| Paired failure rate | **32.1%** |
 
-Shared head-to-head tasks: **50** prompts run on all 7 cloud models.
+### v1 harness caveat
 
-## Success leaderboard (after cleanup)
+The v1 pipeline **did not wire a real calculator**. Models that computed correctly in text were still flagged `wrong_tool_selection / calculator_not_used`. Finance/calculator template results are partly **judge artifact** — see original session notes below.
 
-| Model | Passed | Rate |
-|-------|--------|------|
-| Gemini 3.1 Flash Lite | 42/53 | **79%** |
-| Claude Sonnet 4 | 39/50 | **78%** |
-| GPT-4o Mini | 39/52 | **75%** |
-| Claude 3.5 Haiku | 39/52 | **75%** |
-| DeepSeek V3 | 33/52 | **64%** |
-| Qwen 2.5 7B | 28/52 | **54%** |
-| Llama 3.1 8B | 28/52 | **54%** |
+### v1 cleanup performed
 
-Same-task wins (50 shared prompts):
+- Mock test traces removed
+- Stuck traces re-judged where needed
+- Public export uses paired + canonical dedupe only
 
-- Gemini vs Llama: **15–1**
-- GPT-4o Mini vs Qwen: **13–1**
-- Sonnet vs DeepSeek: **9–2**
+---
 
-## Failure taxonomy (what broke)
+## v2 benchmark (domain expansion)
 
-| Type | Count | Share |
-|------|-------|-------|
-| `constraint_violation` | 50 | 43% |
-| `wrong_tool_selection` | 33 | 28% |
-| `unsupported_claim` | 22 | 19% |
-| `goal_drift` | 10 | 9% |
+| Setting | Value |
+|---------|-------|
+| Task bank | [`data/task-manifest-v2.json`](../data/task-manifest-v2.json) — **56 frozen tasks** |
+| Domains | 7 × 8 tasks (easy / medium / hard) |
+| Models (core) | Same 7 as v1 |
+| Paired set | **56** tasks (all core 7 judged) |
+| Published | 91 failures + 301 passes |
+| Paired failure rate | **23.2%** |
 
-Top subtypes:
+### v2 improvements over v1
 
-1. **`calculator_not_used`** (33) — task says “use calculator”; model does mental math
-2. **`hallucinated_fact`** (22) — invented pricing, sources, etc.
-3. **`budget_ignored`** (19)
-4. **`instruction_ignored`** (18)
-5. **`format_ignored`** (13)
+- Frozen manifest (reproducible `bank_id` keys like `FD-M01`)
+- Domain labels on every task
+- Calculator tool via function calling
+- Gap-fill scripts for incomplete model×task coverage
 
-### Failure rate by task template
+### Extended model runs
 
-| Template | Fail rate | Notes |
-|----------|-----------|-------|
-| `calculator_task` | **94%** | Dominates failures — see caveat below |
-| `find_tools_under_budget` | 49% | Models hallucinate SaaS pricing |
-| `extract_field` | 31% | |
-| `summarize_document` | 30% | |
-| `compare_products` | 26% | |
-| `travel_plan` | 22% | |
-| `workflow_steps` | **3%** | Models handle these well |
+| Model | v2 canonical judged | In 9-model paired set |
+|-------|---------------------|------------------------|
+| GPT-4o | 56 | 49 |
+| Hermes 3 70B | 49 | 49 |
 
-**11 tasks failed for every model** — almost all calculator or “find tools under $X/month” prompts.
+Hermes is missing **7 finance `FD-*` tasks** — not yet gap-filled. The 9-model paired leaderboard uses **49 tasks** where all nine models have a trace.
 
-## Critical caveat: calculator failures are inflated
+Stats: [`data/stats-all-models.json`](../data/stats-all-models.json)
 
-The pipeline **does not wire up a real calculator tool**. Models that compute correctly still get flagged as `wrong_tool_selection / calculator_not_used`.
+---
 
-Until tool-calling is implemented, treat `calculator_task` results as **judge artifact**, not pure model incompetence. This single template accounts for ~30% of all failures.
+## Duplicate runs and canonical dedupe
 
-## Cleanup done (end of session)
+Early v2 benchmark sessions **re-imported the task bank**, creating duplicate `Task` rows in the internal database. Raw per-model judged counts reached **70–86** while the logical benchmark is **56 tasks**.
 
-1. **Mock data wiped** — 4 test traces from `test_benchmark_mode.py` removed (DB + JSON files)
-   ```bash
-   cd backend && python scripts/wipe_data.py --mock-only
-   ```
-2. **Stuck Llama trace re-judged** — `A36B1FF` (A/B workflow task) → **PASSED**
-   ```bash
-   cd backend && python scripts/rejudge_trace.py A36B1FF
-   ```
+**Public artifacts exclude duplicates:**
 
-### Known leftover anomaly (intentionally left)
+1. **Canonical dedupe** — one trace per `(task_key, model)`, newest wins
+2. **Paired filter** — only tasks where every comparison model has exactly one judged trace
 
-- **GPT-4o Mini `A25E148`** — status `failed` (API error on same A/B workflow task). Not re-run.
+Raw DB totals are **not** exported to JSONL or paired stats. See [METHODOLOGY.md](METHODOLOGY.md).
 
-## Infrastructure (current)
+---
 
-| Service | URL |
-|---------|-----|
-| API | `http://localhost:8002/api/v1` |
-| Dashboard | `http://localhost:3000` |
-| DB | `backend/data/lakmus.db` |
-| Trace JSON | `backend/data/traces/*.json` |
+## Export (reproduce public files)
 
-Frontend env: `frontend/.env.local` → `NEXT_PUBLIC_API_URL=http://localhost:8002/api/v1`
-
-**Windows note:** stale uvicorn processes can ghost ports 8000/8001. Backend was moved to **8002** to avoid this.
-
-## Useful scripts
+From the private harness workspace:
 
 ```bash
 cd backend
 set PYTHONPATH=.
 
-python scripts/analyze_run.py          # leaderboard + failure breakdown
-python scripts/show_success_rates.py   # pass/fail by model
-python scripts/wipe_data.py --mock-only
-python scripts/rejudge_trace.py <ID>
+# Full export (v1 + v2 JSONL + all stats sidecars)
+python scripts/export_public_dataset.py
+
+# v2 only
+python scripts/export_public_dataset.py --version v2
+
+# Audit model coverage
+python scripts/audit_all_models.py
+python scripts/audit_v2_run.py
+
+# Gap-fill missing model×task cells
+python scripts/run_v2_gap_fill.py --models or-hermes-3-70b
 ```
 
-## Dataset value (honest take)
+Output lands in repo `data/` at the repository root.
 
-**What’s real signal:**
+---
 
-- Clear frontier vs small-model gap on identical prompts
-- Constraint-following and hallucination patterns differ by model family
-- Workflow-style tasks are nearly solved; extraction/summarization are moderate
+## Stability study
 
-**What needs work before publishing:**
+20 frozen prompts, multiple repeats per model — pass@k and tier estimates.
 
-- Implement real tool-calling (calculator at minimum)
-- Filter or re-tag calculator false positives
-- Export clean JSONL (passes + failures, benchmark-only slice)
-- Optional: step-level failure labels, validation loop
+| Artifact | Description |
+|----------|-------------|
+| [`data/stability-tasks-v1.json`](../data/stability-tasks-v1.json) | Frozen prompt set |
+| [`data/stability-v1.json`](../data/stability-v1.json) | Tier analysis |
 
-**Rough inventory after cleanup:** ~116 failure records + ~249 pass traces for comparison.
+Run (harness):
 
-## Suggested next steps (tomorrow)
-
-1. **Wire calculator tool** — biggest impact on dataset quality
-2. **Export benchmark slice** — 50 tasks × 7 models, JSONL or HuggingFace format
-3. **Dashboard polish** — run progress indicator, filter mock (done in DB), completion toast
-4. **README / research write-up** — reproduction guide, taxonomy, first Failure Report draft
-5. **Rotate OpenRouter API key** — was shared in chat during setup
-
-## Key files
-
+```bash
+python scripts/run_stability_study.py --models or-gemini-flash or-claude-haiku or-llama-3.1-8b --repeats 3
+python scripts/analyze_stability.py
 ```
-backend/app/services/pipeline.py       # benchmark vs quick
-backend/app/services/failure_judge.py  # judge prompt + taxonomy
-backend/app/agents/catalog.py          # models + cost estimates
-backend/app/services/dataset_writer.py # stats, passes, failures
-frontend/app/page.tsx                  # run UI + model picker
-docs/RUNNING.md                        # operational guide
-```
+
+---
+
+## Historical v1 session notes (June 13, 2026)
+
+First multi-model run — preserved for context.
+
+| Metric | Value |
+|--------|-------|
+| Duration | ~2 hours |
+| Raw judged (pre-dedupe) | 365 |
+| Failure rate (raw) | ~31.8% |
+
+**Failure taxonomy (v1 raw run):**
+
+| Type | Share |
+|------|-------|
+| `constraint_violation` | 43% |
+| `wrong_tool_selection` | 28% |
+| `unsupported_claim` | 19% |
+| `goal_drift` | 9% |
+
+**Template hot spots:** `calculator_task` 94% fail (harness artifact), `workflow_steps` 3% fail.
+
+**Infrastructure (internal):** API port 8002, dashboard 3000, SQLite `lakmus.db`.
+
+---
+
+## Related
+
+- [METHODOLOGY.md](METHODOLOGY.md) — paired vs canonical vs raw
+- [DATASET.md](DATASET.md) — public file inventory
+- [FAILURE_REPORT_v1.md](FAILURE_REPORT_v1.md) · [FAILURE_REPORT_v2.md](FAILURE_REPORT_v2.md)

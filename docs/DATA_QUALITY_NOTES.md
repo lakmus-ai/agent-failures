@@ -85,3 +85,11 @@ Model loses coherence on longer structured outputs and bleeds familiar templates
 | `A41942F` | calculator_task | Token bleed in LaTeX |
 
 All preserved in the dataset — valid examples of how agents fail.
+
+---
+
+## Duplicate benchmark runs (v2)
+
+The internal evaluation database accumulated **duplicate traces** when the v2 task bank was imported more than once. Raw judged counts per model (70–86) are **not** used in public stats.
+
+Published JSONL and `stats-paired-*.json` apply **canonical dedupe** (one trace per task per model) and **paired filters** (same task set for every model). See [METHODOLOGY.md](METHODOLOGY.md).

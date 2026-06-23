@@ -1,0 +1,115 @@
+{
+  "paired_task_count": 49,
+  "paired_task_keys": [
+    "b250b05f-aa6a-4cc5-9280-ba6bb52ce481",
+    "adcaae80-9b10-425e-82b2-3caf24ab1126",
+    "ec8c3d43-2521-47f9-b8b8-e1eb2d6f4df3",
+    "92bdf3db-169a-41ef-b305-815bb974c36f",
+    "8f76c5c3-11db-4837-8513-62fee23fd729",
+    "e8c27906-0a33-4ce9-8ba1-27a08375ba1c",
+    "9dadfc49-d670-42b2-aea6-e8fbe9bc378f",
+    "048f14b6-cf95-4b34-ac1b-66de763e0bcb",
+    "33f26bf7-9522-4e1a-ab71-5a75f3f502d5",
+    "d4bddaa1-6393-4be7-9617-2409b58bb5f5",
+    "292c909e-8f96-41ef-9f58-91bf908e8793",
+    "d1a95f01-1c84-4205-86a2-fe655cc7e264",
+    "2ef216ce-143b-48e6-b191-0efed3dd215a",
+    "a173991c-2318-430b-83a6-81cf1f09aade",
+    "5f751eaf-7ef4-41fb-83cb-d9900b8b03e9",
+    "db2e84dc-10c8-47d9-a92b-f0a294c754d8",
+    "847ae8df-a4aa-4717-aa61-35884b06d9b4",
+    "4765ebf5-9049-473a-8332-6fd7540786e5",
+    "56c3cbe6-2f34-4bed-9361-0f345c469a15",
+    "f1852fff-4248-4ec4-8067-870e01027719",
+    "bd9cf22d-d160-400f-98e3-d0006fec176a",
+    "c50a338a-2882-419f-823f-26d4e07422e6",
+    "d401ab54-fd88-46c5-b1f4-60ae0fb6fd2f",
+    "2f15ee80-9de6-4217-85e4-19789a64640c",
+    "26c18eef-1eb0-4529-8d19-331ac5c20f91",
+    "99b57213-3e8f-4c93-9a4d-1574245d237d",
+    "e1e5bcb1-4e75-4335-9cdd-b8252e2b40e6",
+    "1604a483-2d69-4259-ae98-949024863101",
+    "fe102268-fe09-44dd-bed2-4cc1cf13f0fb",
+    "afba234e-6839-42c9-add4-1d9c12565ab3",
+    "9f810041-ea1b-42a8-ac6d-1f7f6f639b8c",
+    "b931a6f8-07b9-4294-a87c-5f59a0621fa1",
+    "2e6eb2f0-b653-4282-8b64-8b17397f2462",
+    "49552499-f461-4e8a-84c8-6a3526fb06d6",
+    "3906de86-e0b7-414a-92f1-bc398167069a",
+    "2b6223c5-f2f4-48d5-bbfe-ffcc177675d0",
+    "4cace7ad-f451-4fdb-b3a1-7baec12cd56c",
+    "678c5424-4956-42ef-8f1b-0d44ddb324bc",
+    "f8b4e9ba-cdc7-48e6-8b97-d0651a94a8a8",
+    "293035d2-d60a-4e59-9edb-f6d186193af9",
+    "43a967bd-131e-4386-a510-bdd72fb00228",
+    "f917c9c0-764e-45a9-8182-542ec2716589",
+    "4cb499ce-0bca-41bb-a017-b2f6ceac781a",
+    "1361e07f-86dd-4c20-a515-be9c517716cf",
+    "87bc0a4b-e8f6-41d2-89b9-2bdd15eccbc3",
+    "2c3441f2-027e-43c1-9fe3-bdce82887450",
+    "59147b59-45da-4369-ab69-2825a269ee41",
+    "9b9656f5-7b54-4cd9-b290-ad643903b65c",
+    "e6b82965-f028-4a19-bf86-0c39b4fd9b48"
+  ],
+  "comparison_models": [
+    "Gemini 3.1 Flash Lite",
+    "Claude Sonnet 4",
+    "GPT-4o Mini",
+    "Claude 3.5 Haiku",
+    "DeepSeek V3",
+    "Qwen 2.5 7B",
+    "Llama 3.1 8B"
+  ],
+  "model_comparison": {
+    "Gemini 3.1 Flash Lite": {
+      "paired_tasks": 49,
+      "passed": 39,
+      "failed": 10,
+      "success_rate": 0.7959,
+      "failure_rate": 0.2041
+    },
+    "Claude Sonnet 4": {
+      "paired_tasks": 49,
+      "passed": 38,
+      "failed": 11,
+      "success_rate": 0.7755,
+      "failure_rate": 0.2245
+    },
+    "GPT-4o Mini": {
+      "paired_tasks": 49,
+      "passed": 38,
+      "failed": 11,
+      "success_rate": 0.7755,
+      "failure_rate": 0.2245
+    },
+    "Claude 3.5 Haiku": {
+      "paired_tasks": 49,
+      "passed": 36,
+      "failed": 13,
+      "success_rate": 0.7347,
+      "failure_rate": 0.2653
+    },
+    "DeepSeek V3": {
+      "paired_tasks": 49,
+      "passed": 31,
+      "failed": 18,
+      "success_rate": 0.6327,
+      "failure_rate": 0.3673
+    },
+    "Qwen 2.5 7B": {
+      "paired_tasks": 49,
+      "passed": 26,
+      "failed": 23,
+      "success_rate": 0.5306,
+      "failure_rate": 0.4694
+    },
+    "Llama 3.1 8B": {
+      "paired_tasks": 49,
+      "passed": 25,
+      "failed": 24,
+      "success_rate": 0.5102,
+      "failure_rate": 0.4898
+    }
+  },
+  "methodology": "Includes only tasks where every comparison model has exactly one judged trace. Use success_rate from this block for public leaderboards."
+}

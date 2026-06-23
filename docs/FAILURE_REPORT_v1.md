@@ -10,14 +10,16 @@ Published by [Lakmus](https://github.com/lakmus-ai) · June 2026
 
 Agents look reliable in demos. Under constraint-heavy tasks, they fail in predictable ways.
 
-We ran **50 identical tasks** across **7 LLM agents** (same prompt, every model) and recorded **365 traces**. Each run was judged for failure type, subtype, severity, and evidence — not just pass/fail.
+We ran **50 identical tasks** across **7 LLM agents** (same prompt, every model) and recorded **343 judged traces** on the **49-task paired benchmark** — tasks where every model has exactly one judged run. Each run was judged for failure type, subtype, severity, and evidence — not just pass/fail.
 
 | Metric | Value |
 |--------|-------|
-| Traces | 365 |
-| Judged failures | 116 (31.8%) |
-| Passes | 249 (68.2%) |
+| Paired benchmark tasks | **49** (all 7 models judged) |
+| Published failures | 110 |
+| Published passes | 233 |
 | Models | Gemini Flash, Claude Sonnet 4, GPT-4o Mini, Claude Haiku, DeepSeek V3, Qwen 2.5 7B, Llama 3.1 8B |
+
+> **Fair comparison:** Public leaderboards use **paired success rate** only — same tasks, all models. Raw per-model totals (uneven trace counts from partial runs or duplicate imports) are omitted. See [`data/stats-paired-v1.json`](../data/stats-paired-v1.json) and [METHODOLOGY.md](METHODOLOGY.md).
 
 ---
 
@@ -34,25 +36,25 @@ This report is the first public slice. The benchmark harness that produced it is
 
 ---
 
-## Success rates (same 50 tasks)
+## Success rates (49 shared tasks)
 
-| Model | Passed | Rate |
-|-------|--------|------|
-| Gemini 3.1 Flash Lite | 42/53 | **79%** |
-| Claude Sonnet 4 | 39/50 | **78%** |
-| GPT-4o Mini | 39/52 | **75%** |
-| Claude 3.5 Haiku | 39/52 | **75%** |
-| DeepSeek V3 | 33/52 | **64%** |
-| Qwen 2.5 7B | 28/52 | **54%** |
-| Llama 3.1 8B | 28/52 | **54%** |
+| Model | Passed | Paired success rate |
+|-------|--------|---------------------|
+| Gemini 3.1 Flash Lite | 39/49 | **80%** |
+| Claude Sonnet 4 | 38/49 | **78%** |
+| GPT-4o Mini | 38/49 | **78%** |
+| Claude 3.5 Haiku | 36/49 | **73%** |
+| DeepSeek V3 | 31/49 | **63%** |
+| Qwen 2.5 7B | 26/49 | **53%** |
+| Llama 3.1 8B | 25/49 | **51%** |
 
-Head-to-head on shared prompts:
+Head-to-head on the same 49 prompts:
 
-- Gemini vs Llama: **15–1**
-- GPT-4o Mini vs Qwen: **13–1**
-- Sonnet vs DeepSeek: **9–2**
+- Gemini vs Llama: **15–1** (33 ties)
+- GPT-4o Mini vs Qwen: **13–1** (35 ties)
+- Sonnet vs DeepSeek: **9–2** (38 ties)
 
-Frontier models cluster at ~75–79%. Small open models sit near ~54%.
+Frontier models cluster at ~73–80%. Small open models sit near ~51–53%.
 
 ---
 
@@ -93,9 +95,9 @@ Frontier models cluster at ~75–79%. Small open models sit near ~54%.
 
 ## Important caveat
 
-`calculator_task` failures are **partially inflated**. The evaluation setup did not expose a real calculator tool. Models that computed correctly were still flagged as `wrong_tool_selection / calculator_not_used`.
+`calculator_task` failures are **partially inflated**. The v1 evaluation setup did not expose a real calculator tool. Models that computed correctly were still flagged as `wrong_tool_selection / calculator_not_used`.
 
-Treat calculator-template results as a **methodology artifact** until tool-calling is wired. Even so, the pattern is informative: agents routinely ignore explicit tool constraints.
+Treat calculator-template results as a **methodology artifact** until tool-calling is wired (fixed in v2). Even so, the pattern is informative: agents routinely ignore explicit tool constraints.
 
 ---
 
@@ -118,12 +120,21 @@ Treat calculator-template results as a **methodology artifact** until tool-calli
 
 | File | Description |
 |------|-------------|
-| [`data/failures-v1.jsonl`](../data/failures-v1.jsonl) | 116 judged failures with taxonomy labels |
-| [`data/passes-v1.jsonl`](../data/passes-v1.jsonl) | 249 passing traces for comparison |
+| [`data/failures-v1.jsonl`](../data/failures-v1.jsonl) | Judged failures on paired benchmark (110 records) |
+| [`data/passes-v1.jsonl`](../data/passes-v1.jsonl) | Passing traces on paired benchmark (233 records) |
+| [`data/stats-paired-v1.json`](../data/stats-paired-v1.json) | **Fair leaderboard** — 49 shared tasks |
 | [`data/taxonomy.json`](../data/taxonomy.json) | Failure type + subtype definitions |
-| [`data/stats-v1.json`](../data/stats-v1.json) | Aggregate stats and model breakdown |
+| [`data/stats-v1.json`](../data/stats-v1.json) | Full aggregate stats (includes unpaired traces) |
 
 Each record includes: `trace_id`, `task`, `model_id`, `final_answer`, and for failures: `failure_type`, `failure_subtype`, `severity`, `confidence`, `evidence`.
+
+**Reproduce a famous failure:**
+
+```bash
+jq 'select(.trace_id=="A0D678B")' data/failures-v1.jsonl
+```
+
+Browse on [Hugging Face](https://huggingface.co/datasets/lakmus/agent-failures-v1) · Quick start: [`notebooks/quicklook.ipynb`](../notebooks/quicklook.ipynb)
 
 ---
 
@@ -135,7 +146,8 @@ Each record includes: `trace_id`, `task`, `model_id`, `final_answer`, and for fa
   author  = {Stern, Paulina and Lakmus},
   year    = {2026},
   publisher = {Lakmus},
-  url     = {https://github.com/lakmus-ai/agent-failures}
+  url     = {https://github.com/lakmus-ai/agent-failures},
+  note    = {49 paired benchmark tasks, 7 models}
 }
 ```
 
@@ -145,4 +157,4 @@ Each record includes: `trace_id`, `task`, `model_id`, `final_answer`, and for fa
 
 - **Lakmus Agent** — open-source agent + Pro tier (built to fail less on constraints)
 - **Lakmus Benchmark** — open-source reproduction harness (later)
-- **Agent Failures v2** — real tool-calling, larger task set, step-level labels
+- **Agent Failures v2** — real tool-calling, 56 frozen tasks, domain breakdown

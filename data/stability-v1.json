@@ -1,0 +1,311 @@
+{
+  "version": "stability-v1",
+  "description": "Pass/fail stability analysis. repeat_runs populated after run_stability_study.py. tier_estimates derived from v1 template fail rates.",
+  "frozen_task_count": 20,
+  "recommended_run": {
+    "tasks": 20,
+    "models": [
+      "or-gemini-flash",
+      "or-claude-haiku",
+      "or-llama-3.1-8b"
+    ],
+    "repeats": 3,
+    "command": "python scripts/run_stability_study.py"
+  },
+  "tier_estimates_from_v1": {
+    "structural_fail": [
+      {
+        "template_id": "calculator_task",
+        "v1_fail_rate": 0.944,
+        "traces": 36,
+        "estimated_same_outcome_pct": 95
+      }
+    ],
+    "unstable": [
+      {
+        "template_id": "extract_field",
+        "v1_fail_rate": 0.305,
+        "traces": 59,
+        "estimated_same_outcome_pct": 70
+      },
+      {
+        "template_id": "summarize_document",
+        "v1_fail_rate": 0.302,
+        "traces": 43,
+        "estimated_same_outcome_pct": 70
+      },
+      {
+        "template_id": "travel_plan",
+        "v1_fail_rate": 0.224,
+        "traces": 58,
+        "estimated_same_outcome_pct": 68
+      }
+    ],
+    "hallucination_prone": [
+      {
+        "template_id": "find_tools_under_budget",
+        "v1_fail_rate": 0.491,
+        "traces": 53,
+        "estimated_same_outcome_pct": 85
+      },
+      {
+        "template_id": "compare_products",
+        "v1_fail_rate": 0.263,
+        "traces": 38,
+        "estimated_same_outcome_pct": 85
+      }
+    ],
+    "stable_pass": [
+      {
+        "template_id": "workflow_steps",
+        "v1_fail_rate": 0.026,
+        "traces": 78,
+        "estimated_same_outcome_pct": 90
+      }
+    ]
+  },
+  "repeat_runs": [
+    {
+      "prompt_prefix": "List the correct order of steps to process a customer refund.",
+      "model": "Gemini 3.1 Flash Lite",
+      "runs": 2,
+      "pass_at_1": true,
+      "pass_at_k": true,
+      "all_same": true,
+      "flip_rate": 0.0,
+      "outcomes_failed": [
+        false,
+        false
+      ],
+      "trace_ids": [
+        "AE0DEF5",
+        "ADB1453"
+      ]
+    },
+    {
+      "prompt_prefix": "List the correct order of steps to process a customer refund.",
+      "model": "Qwen 2.5 7B",
+      "runs": 2,
+      "pass_at_1": true,
+      "pass_at_k": true,
+      "all_same": true,
+      "flip_rate": 0.0,
+      "outcomes_failed": [
+        false,
+        false
+      ],
+      "trace_ids": [
+        "A5A7AA6",
+        "A7F8189"
+      ]
+    },
+    {
+      "prompt_prefix": "List the correct order of steps to process a customer refund.",
+      "model": "Llama 3.1 8B",
+      "runs": 2,
+      "pass_at_1": true,
+      "pass_at_k": true,
+      "all_same": true,
+      "flip_rate": 0.0,
+      "outcomes_failed": [
+        false,
+        false
+      ],
+      "trace_ids": [
+        "AD73C4C",
+        "A5FFC6D"
+      ]
+    },
+    {
+      "prompt_prefix": "List the correct order of steps to process a customer refund.",
+      "model": "GPT-4o Mini",
+      "runs": 2,
+      "pass_at_1": true,
+      "pass_at_k": true,
+      "all_same": true,
+      "flip_rate": 0.0,
+      "outcomes_failed": [
+        false,
+        false
+      ],
+      "trace_ids": [
+        "AD2864F",
+        "AF9434C"
+      ]
+    },
+    {
+      "prompt_prefix": "List the correct order of steps to process a customer refund.",
+      "model": "Claude 3.5 Haiku",
+      "runs": 2,
+      "pass_at_1": true,
+      "pass_at_k": true,
+      "all_same": true,
+      "flip_rate": 0.0,
+      "outcomes_failed": [
+        false,
+        false
+      ],
+      "trace_ids": [
+        "A7813B0",
+        "AD6AAD1"
+      ]
+    },
+    {
+      "prompt_prefix": "List the correct order of steps to process a customer refund.",
+      "model": "Claude Sonnet 4",
+      "runs": 2,
+      "pass_at_1": true,
+      "pass_at_k": true,
+      "all_same": true,
+      "flip_rate": 0.0,
+      "outcomes_failed": [
+        false,
+        false
+      ],
+      "trace_ids": [
+        "AC756ED",
+        "A24021B"
+      ]
+    },
+    {
+      "prompt_prefix": "List the correct order of steps to process a customer refund.",
+      "model": "DeepSeek V3",
+      "runs": 2,
+      "pass_at_1": true,
+      "pass_at_k": true,
+      "all_same": true,
+      "flip_rate": 0.0,
+      "outcomes_failed": [
+        false,
+        false
+      ],
+      "trace_ids": [
+        "AB69124",
+        "A385E3C"
+      ]
+    },
+    {
+      "prompt_prefix": "Use the calculator tool to compute: sqrt(144) * 7. Show your work.",
+      "model": "Gemini 3.1 Flash Lite",
+      "runs": 2,
+      "pass_at_1": false,
+      "pass_at_k": false,
+      "all_same": true,
+      "flip_rate": 0.0,
+      "outcomes_failed": [
+        true,
+        true
+      ],
+      "trace_ids": [
+        "A44A564",
+        "A472F51"
+      ]
+    },
+    {
+      "prompt_prefix": "Use the calculator tool to compute: sqrt(144) * 7. Show your work.",
+      "model": "Qwen 2.5 7B",
+      "runs": 2,
+      "pass_at_1": false,
+      "pass_at_k": false,
+      "all_same": true,
+      "flip_rate": 0.0,
+      "outcomes_failed": [
+        true,
+        true
+      ],
+      "trace_ids": [
+        "A647C45",
+        "A40E65E"
+      ]
+    },
+    {
+      "prompt_prefix": "Use the calculator tool to compute: sqrt(144) * 7. Show your work.",
+      "model": "Llama 3.1 8B",
+      "runs": 2,
+      "pass_at_1": false,
+      "pass_at_k": false,
+      "all_same": true,
+      "flip_rate": 0.0,
+      "outcomes_failed": [
+        true,
+        true
+      ],
+      "trace_ids": [
+        "ACC79A3",
+        "A55BFAE"
+      ]
+    },
+    {
+      "prompt_prefix": "Use the calculator tool to compute: sqrt(144) * 7. Show your work.",
+      "model": "GPT-4o Mini",
+      "runs": 2,
+      "pass_at_1": false,
+      "pass_at_k": false,
+      "all_same": true,
+      "flip_rate": 0.0,
+      "outcomes_failed": [
+        true,
+        true
+      ],
+      "trace_ids": [
+        "AED9C36",
+        "AE6B61A"
+      ]
+    },
+    {
+      "prompt_prefix": "Use the calculator tool to compute: sqrt(144) * 7. Show your work.",
+      "model": "Claude 3.5 Haiku",
+      "runs": 2,
+      "pass_at_1": false,
+      "pass_at_k": false,
+      "all_same": true,
+      "flip_rate": 0.0,
+      "outcomes_failed": [
+        true,
+        true
+      ],
+      "trace_ids": [
+        "A1F964D",
+        "ABB70AA"
+      ]
+    },
+    {
+      "prompt_prefix": "Use the calculator tool to compute: sqrt(144) * 7. Show your work.",
+      "model": "Claude Sonnet 4",
+      "runs": 2,
+      "pass_at_1": true,
+      "pass_at_k": true,
+      "all_same": true,
+      "flip_rate": 0.0,
+      "outcomes_failed": [
+        false,
+        false
+      ],
+      "trace_ids": [
+        "AA0D9CA",
+        "A1D60CF"
+      ]
+    },
+    {
+      "prompt_prefix": "Use the calculator tool to compute: sqrt(144) * 7. Show your work.",
+      "model": "DeepSeek V3",
+      "runs": 2,
+      "pass_at_1": false,
+      "pass_at_k": false,
+      "all_same": true,
+      "flip_rate": 0.0,
+      "outcomes_failed": [
+        true,
+        true
+      ],
+      "trace_ids": [
+        "A918A5D",
+        "A41942F"
+      ]
+    }
+  ],
+  "summary": {
+    "repeat_pairs_analyzed": 14,
+    "pairs_with_flips": 0
+  }
+}

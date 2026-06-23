@@ -46,7 +46,9 @@
       "solved_wrong_task": "Addressed a different problem than requested",
       "irrelevant_focus": "Focused on irrelevant objectives",
       "lost_intent": "Lost track of original task intent",
-      "partial_completion": "Completed only a subset of requirements"
+      "partial_completion": "Completed only a subset of requirements",
+      "comfort_zone_reversion": "Abandoned task for familiar training patterns",
+      "multilingual_bleed": "Switched language or script mid-output"
     },
     "default_severity": "medium"
   },

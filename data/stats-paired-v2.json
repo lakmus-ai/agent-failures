@@ -1,0 +1,122 @@
+{
+  "paired_task_count": 56,
+  "paired_task_keys": [
+    "bank:CD-E01",
+    "bank:CD-E02",
+    "bank:CD-M01",
+    "bank:CD-M02",
+    "bank:CD-M03",
+    "bank:CD-M04",
+    "bank:CD-H01",
+    "bank:CD-H02",
+    "bank:FD-E01",
+    "bank:FD-E02",
+    "bank:FD-M01",
+    "bank:FD-M02",
+    "bank:FD-M03",
+    "bank:FD-M04",
+    "bank:FD-H01",
+    "bank:FD-H02",
+    "bank:WE-E01",
+    "bank:WE-E02",
+    "bank:WE-M01",
+    "bank:WE-M02",
+    "bank:WE-M03",
+    "bank:WE-M04",
+    "bank:WE-H01",
+    "bank:WE-H02",
+    "bank:RC-E01",
+    "bank:RC-E02",
+    "bank:RC-M01",
+    "bank:RC-M02",
+    "bank:RC-M03",
+    "bank:RC-M04",
+    "bank:RC-H01",
+    "bank:RC-H02",
+    "bank:DP-E01",
+    "bank:DP-E02",
+    "bank:DP-M01",
+    "bank:DP-M02",
+    "bank:DP-M03",
+    "bank:DP-M04",
+    "bank:DP-H01",
+    "bank:DP-H02",
+    "bank:AP-E01",
+    "bank:AP-E02",
+    "bank:AP-M01",
+    "bank:AP-M02",
+    "bank:AP-M03",
+    "bank:AP-M04",
+    "bank:AP-H01",
+    "bank:AP-H02",
+    "bank:SP-E01",
+    "bank:SP-E02",
+    "bank:SP-M01",
+    "bank:SP-M02",
+    "bank:SP-M03",
+    "bank:SP-M04",
+    "bank:SP-H01",
+    "bank:SP-H02"
+  ],
+  "comparison_models": [
+    "Gemini 3.1 Flash Lite",
+    "Claude Sonnet 4",
+    "GPT-4o Mini",
+    "Claude 3.5 Haiku",
+    "DeepSeek V3",
+    "Qwen 2.5 7B",
+    "Llama 3.1 8B"
+  ],
+  "model_comparison": {
+    "Gemini 3.1 Flash Lite": {
+      "paired_tasks": 56,
+      "passed": 47,
+      "failed": 9,
+      "success_rate": 0.8393,
+      "failure_rate": 0.1607
+    },
+    "Claude Sonnet 4": {
+      "paired_tasks": 56,
+      "passed": 46,
+      "failed": 10,
+      "success_rate": 0.8214,
+      "failure_rate": 0.1786
+    },
+    "GPT-4o Mini": {
+      "paired_tasks": 56,
+      "passed": 47,
+      "failed": 9,
+      "success_rate": 0.8393,
+      "failure_rate": 0.1607
+    },
+    "Claude 3.5 Haiku": {
+      "paired_tasks": 56,
+      "passed": 39,
+      "failed": 17,
+      "success_rate": 0.6964,
+      "failure_rate": 0.3036
+    },
+    "DeepSeek V3": {
+      "paired_tasks": 56,
+      "passed": 45,
+      "failed": 11,
+      "success_rate": 0.8036,
+      "failure_rate": 0.1964
+    },
+    "Qwen 2.5 7B": {
+      "paired_tasks": 56,
+      "passed": 40,
+      "failed": 16,
+      "success_rate": 0.7143,
+      "failure_rate": 0.2857
+    },
+    "Llama 3.1 8B": {
+      "paired_tasks": 56,
+      "passed": 37,
+      "failed": 19,
+      "success_rate": 0.6607,
+      "failure_rate": 0.3393
+    }
+  },
+  "methodology": "Includes only tasks where every comparison model has exactly one judged trace. Use success_rate from this block for public leaderboards."
+}

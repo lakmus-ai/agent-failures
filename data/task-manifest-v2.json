@@ -1,0 +1,638 @@
+{
+  "version": "v2.0",
+  "description": "Agent Failures v2 frozen task bank — 7 domains x 8 tasks",
+  "domains": [
+    "code_dev",
+    "finance_data",
+    "writing_email",
+    "research_comparison",
+    "document_processing",
+    "assistant_planning",
+    "support_policy"
+  ],
+  "tasks": [
+    {
+      "id": "CD-E01",
+      "domain": "code_dev",
+      "template_id": "debug_snippet",
+      "difficulty": "easy",
+      "task_version": "v2.0",
+      "prompt": "Fix the bug in this Python function so it returns the sum of a list:\n\ndef total(nums):\n    s = 0\n    for i in range(len(nums) + 1):\n        s += nums[i]\n    return s",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "CD-E02",
+      "domain": "code_dev",
+      "template_id": "debug_snippet",
+      "difficulty": "easy",
+      "task_version": "v2.0",
+      "prompt": "Fix the off-by-one error in this loop:\n\ndef first_n(items, n):\n    return items[0:n+1]",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "CD-M01",
+      "domain": "code_dev",
+      "template_id": "debug_snippet",
+      "difficulty": "medium",
+      "task_version": "v2.0",
+      "prompt": "Explain why this code fails and provide a fix:\n\ndef parse_json(text):\n    import json\n    return json.loads(text)",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "CD-M02",
+      "domain": "code_dev",
+      "template_id": "debug_snippet",
+      "difficulty": "medium",
+      "task_version": "v2.0",
+      "prompt": "Fix the bug: function should return unique values preserving order:\n\ndef unique(items):\n    return list(set(items))",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "CD-M03",
+      "domain": "code_dev",
+      "template_id": "explain_stack_trace",
+      "difficulty": "medium",
+      "task_version": "v2.0",
+      "prompt": "Explain this error and suggest a fix:\n\nTypeError: 'NoneType' object is not subscriptable\n  at line 12 in get_user_email(profile)",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "CD-M04",
+      "domain": "code_dev",
+      "template_id": "explain_stack_trace",
+      "difficulty": "medium",
+      "task_version": "v2.0",
+      "prompt": "Explain this error and suggest a fix:\n\nKeyError: 'user_id'\n  at line 8 in build_payload(session)",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "CD-H01",
+      "domain": "code_dev",
+      "template_id": "debug_snippet",
+      "difficulty": "hard",
+      "task_version": "v2.0",
+      "prompt": "Refactor for readability and fix the logic error. Preserve behavior for valid inputs:\n\ndef discount(price, pct):\n    return price - price * pct",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "CD-H02",
+      "domain": "code_dev",
+      "template_id": "debug_snippet",
+      "difficulty": "hard",
+      "task_version": "v2.0",
+      "prompt": "Fix SQL injection risk and return parameterized query pattern for:\n\ndef find_user(name):\n    return f\"SELECT * FROM users WHERE name = '{name}'\"",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "FD-E01",
+      "domain": "finance_data",
+      "template_id": "calculator_task",
+      "difficulty": "easy",
+      "task_version": "v2.0",
+      "prompt": "Use the calculator tool to compute: sqrt(144) * 7. Show your work.",
+      "constraints": {
+        "type": "tool_required"
+      },
+      "expected_tools": [
+        "calculator"
+      ]
+    },
+    {
+      "id": "FD-E02",
+      "domain": "finance_data",
+      "template_id": "calculator_task",
+      "difficulty": "easy",
+      "task_version": "v2.0",
+      "prompt": "Use the calculator tool to compute: (45 * 12) + 89. Show your work.",
+      "constraints": {
+        "type": "tool_required"
+      },
+      "expected_tools": [
+        "calculator"
+      ]
+    },
+    {
+      "id": "FD-M01",
+      "domain": "finance_data",
+      "template_id": "calculator_task",
+      "difficulty": "medium",
+      "task_version": "v2.0",
+      "prompt": "A store offers 10% off items over $100. Item price: $250. Use the calculator to find the final price.",
+      "constraints": {
+        "type": "tool_required"
+      },
+      "expected_tools": [
+        "calculator"
+      ]
+    },
+    {
+      "id": "FD-M02",
+      "domain": "finance_data",
+      "template_id": "calculator_task",
+      "difficulty": "medium",
+      "task_version": "v2.0",
+      "prompt": "A store offers 15% off items over $50. Item price: $399. Use the calculator to find the final price.",
+      "constraints": {
+        "type": "tool_required"
+      },
+      "expected_tools": [
+        "calculator"
+      ]
+    },
+    {
+      "id": "FD-M03",
+      "domain": "finance_data",
+      "template_id": "parse_financial_table",
+      "difficulty": "medium",
+      "task_version": "v2.0",
+      "prompt": "Extract total revenue and YoY growth from: 'Q3 revenue: $4.2M (+12% YoY). Operating margin: 18%.' Return JSON.",
+      "constraints": {
+        "type": "extraction"
+      },
+      "expected_tools": []
+    },
+    {
+      "id": "FD-M04",
+      "domain": "finance_data",
+      "template_id": "budget_forecast",
+      "difficulty": "medium",
+      "task_version": "v2.0",
+      "prompt": "Team budget is $120k/year for 8 people. Use calculator to compute average per person per month.",
+      "constraints": {
+        "type": "budget"
+      },
+      "expected_tools": [
+        "calculator"
+      ]
+    },
+    {
+      "id": "FD-H01",
+      "domain": "finance_data",
+      "template_id": "calculator_task",
+      "difficulty": "hard",
+      "task_version": "v2.0",
+      "prompt": "Calculate compound interest: principal=$10000, rate=7%, years=5, compounded quarterly. Use calculator for each step.",
+      "constraints": {
+        "type": "tool_required"
+      },
+      "expected_tools": [
+        "calculator"
+      ]
+    },
+    {
+      "id": "FD-H02",
+      "domain": "finance_data",
+      "template_id": "budget_forecast",
+      "difficulty": "hard",
+      "task_version": "v2.0",
+      "prompt": "Forecast runway: $500k cash, $85k monthly burn, $20k expected monthly revenue growth starting month 4. Use calculator for month-by-month projection summary.",
+      "constraints": {
+        "type": "budget"
+      },
+      "expected_tools": [
+        "calculator"
+      ]
+    },
+    {
+      "id": "WE-E01",
+      "domain": "writing_email",
+      "template_id": "draft_reply",
+      "difficulty": "easy",
+      "task_version": "v2.0",
+      "prompt": "Draft a short reply confirming receipt of the message below:\n\nHi — can you deliver the analytics dashboard by Friday? We need all KPIs.",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "WE-E02",
+      "domain": "writing_email",
+      "template_id": "draft_reply",
+      "difficulty": "easy",
+      "task_version": "v2.0",
+      "prompt": "Draft a one-sentence acknowledgment for: 'Please review the attached contract by EOD.'",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "WE-M01",
+      "domain": "writing_email",
+      "template_id": "draft_reply",
+      "difficulty": "medium",
+      "task_version": "v2.0",
+      "prompt": "Draft a professional reply declining the request politely. Max 120 words:\n\nPlease approve the $50k budget increase for Q3 marketing spend.",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "WE-M02",
+      "domain": "writing_email",
+      "template_id": "rewrite_professional",
+      "difficulty": "medium",
+      "task_version": "v2.0",
+      "prompt": "Rewrite in professional tone (max 100 words): 'hey sorry lol missed ur email bc was swamped can u send again thx'",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "WE-M03",
+      "domain": "writing_email",
+      "template_id": "draft_reply",
+      "difficulty": "medium",
+      "task_version": "v2.0",
+      "prompt": "Draft a reply that confirms meeting time but does NOT agree to scope change. Max 100 words:\n\nCan we move the call to Tuesday and also include the mobile app redesign in this sprint?",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "WE-M04",
+      "domain": "writing_email",
+      "template_id": "rewrite_professional",
+      "difficulty": "medium",
+      "task_version": "v2.0",
+      "prompt": "Summarize this email thread in 3 bullet points for executive briefing:\n\n(1) Client asked for SOC2 timeline. (2) Legal needs vendor questionnaire. (3) Engineering says 6-8 weeks.",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "WE-H01",
+      "domain": "writing_email",
+      "template_id": "draft_reply",
+      "difficulty": "hard",
+      "task_version": "v2.0",
+      "prompt": "Rewrite the draft reply to be firm but empathetic. Do NOT commit to a deadline. Max 150 words:\n\nWe need the full migration done by next Monday or we will cancel.",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "WE-H02",
+      "domain": "writing_email",
+      "template_id": "rewrite_professional",
+      "difficulty": "hard",
+      "task_version": "v2.0",
+      "prompt": "Draft response to angry customer about outage. Apologize, explain remediation, do not admit liability. Max 150 words.",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "RC-E01",
+      "domain": "research_comparison",
+      "template_id": "find_tools_under_budget",
+      "difficulty": "easy",
+      "task_version": "v2.0",
+      "prompt": "Find 2 CRM tools under $50/month. List name and price only.",
+      "constraints": {
+        "type": "budget",
+        "budget": 50
+      },
+      "expected_tools": [
+        "search"
+      ]
+    },
+    {
+      "id": "RC-E02",
+      "domain": "research_comparison",
+      "template_id": "compare_products",
+      "difficulty": "easy",
+      "task_version": "v2.0",
+      "prompt": "Compare 2 email marketing tools. Focus on pricing and key features.",
+      "constraints": {
+        "type": "comparison"
+      },
+      "expected_tools": [
+        "search"
+      ]
+    },
+    {
+      "id": "RC-M01",
+      "domain": "research_comparison",
+      "template_id": "find_tools_under_budget",
+      "difficulty": "medium",
+      "task_version": "v2.0",
+      "prompt": "Find 5 project management tools under $100/month for a team of 25. Include pricing tiers.",
+      "constraints": {
+        "type": "budget"
+      },
+      "expected_tools": [
+        "search"
+      ]
+    },
+    {
+      "id": "RC-M02",
+      "domain": "research_comparison",
+      "template_id": "compare_products",
+      "difficulty": "medium",
+      "task_version": "v2.0",
+      "prompt": "Compare 4 CRM tools for a SMB company. Include pros, cons, and pricing.",
+      "constraints": {
+        "type": "comparison"
+      },
+      "expected_tools": [
+        "search"
+      ]
+    },
+    {
+      "id": "RC-M03",
+      "domain": "research_comparison",
+      "template_id": "find_tools_under_budget",
+      "difficulty": "medium",
+      "task_version": "v2.0",
+      "prompt": "Find 3 analytics tools under $75/month. Include pricing tiers.",
+      "constraints": {
+        "type": "budget"
+      },
+      "expected_tools": [
+        "search"
+      ]
+    },
+    {
+      "id": "RC-M04",
+      "domain": "research_comparison",
+      "template_id": "compare_products",
+      "difficulty": "medium",
+      "task_version": "v2.0",
+      "prompt": "Compare 3 helpdesk tools for a startup. Include pros, cons, and pricing.",
+      "constraints": {
+        "type": "comparison"
+      },
+      "expected_tools": [
+        "search"
+      ]
+    },
+    {
+      "id": "RC-H01",
+      "domain": "research_comparison",
+      "template_id": "find_tools_under_budget",
+      "difficulty": "hard",
+      "task_version": "v2.0",
+      "prompt": "Find 3 CRM tools under $100/month in US. Exclude tools without free trial. Rank by value.",
+      "constraints": {
+        "type": "budget"
+      },
+      "expected_tools": [
+        "search"
+      ]
+    },
+    {
+      "id": "RC-H02",
+      "domain": "research_comparison",
+      "template_id": "compare_products",
+      "difficulty": "hard",
+      "task_version": "v2.0",
+      "prompt": "Compare 4 scheduling tools under $500/month. Comparison table with 5+ criteria.",
+      "constraints": {
+        "type": "comparison"
+      },
+      "expected_tools": [
+        "search"
+      ]
+    },
+    {
+      "id": "DP-E01",
+      "domain": "document_processing",
+      "template_id": "extract_field",
+      "difficulty": "easy",
+      "task_version": "v2.0",
+      "prompt": "Extract the company name from this text: Acme Corp was founded in 2019 by Jane Doe. HQ: San Francisco.",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "DP-E02",
+      "domain": "document_processing",
+      "template_id": "summarize_document",
+      "difficulty": "easy",
+      "task_version": "v2.0",
+      "prompt": "Summarize the following document in 50 words or fewer:\n\nQ3 revenue grew 12% YoY. Churn fell to 3.2%. Two features shipped.",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "DP-M01",
+      "domain": "document_processing",
+      "template_id": "summarize_document",
+      "difficulty": "medium",
+      "task_version": "v2.0",
+      "prompt": "Summarize the document below in 100 words. Do NOT mention layoffs.\n\nQ3 revenue grew 12% YoY driven by enterprise adoption. The product team shipped 4 major features. Customer churn decreased to 3.2%. A competitor launched a similar product at lower pricing.",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "DP-M02",
+      "domain": "document_processing",
+      "template_id": "extract_field",
+      "difficulty": "medium",
+      "task_version": "v2.0",
+      "prompt": "Extract company name and headquarters from the source. Return as JSON.\n\nAcme Corp was founded in 2019 by Jane Doe. HQ: San Francisco. Revenue: $4.2M in 2024.",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "DP-M03",
+      "domain": "document_processing",
+      "template_id": "extract_to_schema",
+      "difficulty": "medium",
+      "task_version": "v2.0",
+      "prompt": "Extract fields into JSON schema {company, revenue, year}: TechStart Inc (NYSE: TSRT) employs 340 people. Latest Series B: $28M in 2024.",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "DP-M04",
+      "domain": "document_processing",
+      "template_id": "summarize_document",
+      "difficulty": "medium",
+      "task_version": "v2.0",
+      "prompt": "Summarize in 150 words. Do NOT mention competitors.\n\nMeeting notes: Team agreed to migrate to PostgreSQL by Q2. Budget approved for 2 new hires. Legal flagged GDPR concerns.",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "DP-H01",
+      "domain": "document_processing",
+      "template_id": "extract_field",
+      "difficulty": "hard",
+      "task_version": "v2.0",
+      "prompt": "Extract founding year, CEO name, and validate founding year is a valid year.\n\nGreenLeaf Ltd, founded 2015, CEO: Maria Chen, operates in renewable energy.",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "DP-H02",
+      "domain": "document_processing",
+      "template_id": "redact_pii",
+      "difficulty": "hard",
+      "task_version": "v2.0",
+      "prompt": "Redact all PII from this text and return redacted version:\n\nContact John Smith at john.smith@acme.com or +1-415-555-0199 regarding account 88421.",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "AP-E01",
+      "domain": "assistant_planning",
+      "template_id": "workflow_steps",
+      "difficulty": "easy",
+      "task_version": "v2.0",
+      "prompt": "List the correct order of steps to deploy a web application.",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "AP-E02",
+      "domain": "assistant_planning",
+      "template_id": "travel_plan",
+      "difficulty": "easy",
+      "task_version": "v2.0",
+      "prompt": "Create a 3-day travel plan for Tokyo. Include 2 activities per day.",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "AP-M01",
+      "domain": "assistant_planning",
+      "template_id": "workflow_steps",
+      "difficulty": "medium",
+      "task_version": "v2.0",
+      "prompt": "Create a workflow with exactly 5 steps to onboard a new employee. Number each step.",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "AP-M02",
+      "domain": "assistant_planning",
+      "template_id": "travel_plan",
+      "difficulty": "medium",
+      "task_version": "v2.0",
+      "prompt": "Plan a 5-day trip to Lisbon with a budget of $2500. Include transport and lodging.",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "AP-M03",
+      "domain": "assistant_planning",
+      "template_id": "schedule_meeting",
+      "difficulty": "medium",
+      "task_version": "v2.0",
+      "prompt": "Propose 3 meeting times next week for a 30-min sync with US and EU attendees. Consider time zones.",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "AP-M04",
+      "domain": "assistant_planning",
+      "template_id": "prioritize_tasks",
+      "difficulty": "medium",
+      "task_version": "v2.0",
+      "prompt": "Prioritize these tasks for today: (1) fix P1 bug (2) draft Q3 report (3) team 1:1s (4) expense approvals. Explain order.",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "AP-H01",
+      "domain": "assistant_planning",
+      "template_id": "travel_plan",
+      "difficulty": "hard",
+      "task_version": "v2.0",
+      "prompt": "Create a 7-day itinerary for Lisbon under $4000. Must include museum visit. Optimize for minimal walking.",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "AP-H02",
+      "domain": "assistant_planning",
+      "template_id": "workflow_steps",
+      "difficulty": "hard",
+      "task_version": "v2.0",
+      "prompt": "Design a 5-step workflow for run an A/B test that includes validation at steps 1, 3, and 5. Explain why order matters.",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "SP-E01",
+      "domain": "support_policy",
+      "template_id": "ticket_response",
+      "difficulty": "easy",
+      "task_version": "v2.0",
+      "prompt": "Draft a support reply acknowledging ticket #1042: User cannot reset password.",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "SP-E02",
+      "domain": "support_policy",
+      "template_id": "ticket_response",
+      "difficulty": "easy",
+      "task_version": "v2.0",
+      "prompt": "Draft a support reply acknowledging ticket #2088: Export button greyed out.",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "SP-M01",
+      "domain": "support_policy",
+      "template_id": "ticket_response",
+      "difficulty": "medium",
+      "task_version": "v2.0",
+      "prompt": "Customer ticket: User charged twice for the same subscription. Policy: Double charges refunded within 5 business days. Draft reply following policy.",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "SP-M02",
+      "domain": "support_policy",
+      "template_id": "policy_check",
+      "difficulty": "medium",
+      "task_version": "v2.0",
+      "prompt": "Can we offer refund after 45 days? Policy: Refunds within 30 days only. Answer yes/no and cite policy.",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "SP-M03",
+      "domain": "support_policy",
+      "template_id": "ticket_response",
+      "difficulty": "medium",
+      "task_version": "v2.0",
+      "prompt": "Customer ticket: Cannot export data after plan downgrade. Policy: Export on Pro only; downgrade removes export after billing cycle. Draft reply.",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "SP-M04",
+      "domain": "support_policy",
+      "template_id": "policy_check",
+      "difficulty": "medium",
+      "task_version": "v2.0",
+      "prompt": "Customer requests exception to data retention limit. Policy: GDPR requires deletion within 90 days. Advise agent response.",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "SP-H01",
+      "domain": "support_policy",
+      "template_id": "ticket_response",
+      "difficulty": "hard",
+      "task_version": "v2.0",
+      "prompt": "Escalation ticket: Refund request outside 30-day window for $800. Policy: Escalate billing disputes over $500 to Tier 2. Draft response with rationale.",
+      "constraints": {},
+      "expected_tools": []
+    },
+    {
+      "id": "SP-H02",
+      "domain": "support_policy",
+      "template_id": "policy_check",
+      "difficulty": "hard",
+      "task_version": "v2.0",
+      "prompt": "Enterprise client wants SLA credit after 2h outage. Policy: Credits only if uptime below 99.9% monthly. Decide and draft response.",
+      "constraints": {},
+      "expected_tools": []
+    }
+  ]
+}

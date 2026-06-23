@@ -16,6 +16,29 @@ The model did not mix languages politely. It **fled**.
 
 ---
 
+## Reproduce this trace
+
+From the repo root:
+
+```bash
+jq 'select(.trace_id=="A0D678B")' data/failures-v1.jsonl
+```
+
+Or in Python ([`notebooks/quicklook.ipynb`](../notebooks/quicklook.ipynb)):
+
+```python
+import json
+from pathlib import Path
+failures = [json.loads(l) for l in Path("data/failures-v1.jsonl").read_text().splitlines() if l]
+next(r for r in failures if r["trace_id"] == "A0D678B")
+```
+
+**Download:** [Hugging Face — lakmus/agent-failures-v1](https://huggingface.co/datasets/lakmus/agent-failures-v1) · [GitHub release v1.0.0](https://github.com/lakmus-ai/agent-failures/releases/tag/v1.0.0)
+
+> **Benchmark context:** This trace is from the v1 paired benchmark — **49 shared tasks** across 7 models. DeepSeek V3 passed **31/49 (63%)** vs Gemini **39/49 (80%)** on identical prompts. See [`data/stats-paired-v1.json`](../../data/stats-paired-v1.json).
+
+---
+
 ## The transcript arc
 
 ```
@@ -100,34 +123,6 @@ Comfort zone reversion is a **stability failure**, not an intelligence failure.
 
 ---
 
-## Architecture note
-
-Current LLM stack:
-
-```
-Prompt → Transformer (next-token prediction) → Output
-              ↑
-         (optional RAG / tools / memory)
-```
-
-Trace A0D678B suggests what is missing:
-
-| Brain function | Role | LLM equivalent today |
-|----------------|------|----------------------|
-| **Prefrontal cortex** | Maintains task set, inhibits irrelevant patterns | Weak — prompt is a suggestion, not a lock |
-| **Anterior cingulate** | Error detection, conflict monitoring | No "this output doesn't match task" circuit |
-| **Basal ganglia** | Habit vs goal-directed action | Token habits win when goals weaken |
-
-When supervision is just more tokens in the context window, the model's **own output overwrites the task**. The decoder finds comfort in training priors.
-
-**Comfort zone reversion is what happens when there is no inhibitory circuit strong enough to hold the line.**
-
-Memory and RAG add information. They do not add **inhibitory control** — the ability to suppress high-probability but task-wrong continuations.
-
-If the path to AGI requires systems that stay on task under load, encoder-decoder stacks with memory bolted on may be structurally insufficient without something analogous to supervisory brain regions.
-
----
-
 ## Classification
 
 Judge label (v1): `goal_drift / irrelevant_focus`
@@ -137,6 +132,8 @@ Research label: **`comfort_zone_reversion`** — also described as computational
 Annotated record: [`data/case-studies/comfort-zone-reversion-A0D678B.json`](../../data/case-studies/comfort-zone-reversion-A0D678B.json)
 
 Technical audit of all 7 affected traces: [`docs/DATA_QUALITY_NOTES.md`](../DATA_QUALITY_NOTES.md)
+
+**Full dataset:** [github.com/lakmus-ai/agent-failures](https://github.com/lakmus-ai/agent-failures)
 
 ---
 
