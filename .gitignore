@@ -6,6 +6,11 @@ docs/RUNNING.md
 docs/ROADMAP.md
 docs/internal/
 
+# Lakmus product (private — lives in lakmus-beta / lakmus-ai/lakmus only)
+lakmus/
+guess-the-llm/
+.vercelignore
+
 # Secrets
 .env
 **/.env
